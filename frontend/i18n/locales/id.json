@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "services": "Layanan",
+    "portfolio": "Portofolio",
+    "contact": "Kontak"
+  },
+  "home": {
+    "greeting": "Halo, Saya",
+    "role_prefix": "Dan saya seorang",
+    "description": "Saya adalah seorang pengembang perangkat lunak yang antusias dalam membangun aplikasi web modern, fungsional, dan ramah pengguna.",
+    "more_about": "Lebih Banyak Tentang Saya"
+  },
+  "about": {
+    "title_1": "Tentang",
+    "title_2": "Saya",
+    "p1": "Halo! Saya adalah Mahfudin Adnan, seorang Software Engineer yang berfokus pada pengembangan ekosistem digital yang modern dan intuitif. Bagi saya, 'coding' bukan sekadar menulis baris perintah, melainkan seni merancang solusi nyata yang memudahkan penggunanya.",
+    "p2": "Dengan pengalaman dalam merancang antarmuka untuk aplikasi berskala institusi, hingga merakit integrasi 'AI Chatbot', saya selalu antusias menghadapi tantangan teknis yang baru. Saya percaya bahwa perpaduan antara visual yang indah dan arsitektur sistem yang tangguh adalah kunci dari produk digital yang sukses.",
+    "cta": "Lihat Keahlian Saya"
+  },
+  "services": {
+    "title_1": "Keahlian &",
+    "title_2": "Layanan",
+    "frontend_title": "Frontend & Mobile Web",
+    "frontend_desc": "Membangun antarmuka yang responsif, interaktif, dan berkinerja tinggi menggunakan Vue.js, Nuxt, dan Flutter.",
+    "backend_title": "Backend Architecture",
+    "backend_desc": "Merancang API dan arsitektur server yang aman dan skalabel menggunakan Python (FastAPI), Golang, dan PostgreSQL.",
+    "ai_title": "AI & Solusi Cerdas",
+    "ai_desc": "Mengintegrasikan kecerdasan buatan dan Large Language Models (LLM) untuk menciptakan ekosistem Chatbot dan otomatisasi pintar."
+  }
+}

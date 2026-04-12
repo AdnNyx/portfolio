@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hello, It's Me",
+    "role_prefix": "And I'm a",
+    "description": "I am an enthusiastic software developer dedicated to building modern, functional, and user-friendly web applications.",
+    "more_about": "More About Me"
+  },
+  "about": {
+    "title_1": "About",
+    "title_2": "Me",
+    "p1": "Hello! I'm Mahfudin Adnan, a Software Engineer focused on developing modern and intuitive digital ecosystems. For me, 'coding' is not just about writing lines of commands, but the art of designing real-world solutions that make users' lives easier.",
+    "p2": "With experience in designing interfaces for institutional-scale applications, to assembling 'AI Chatbot' integrations, I am always enthusiastic about tackling new technical challenges. I believe that the combination of beautiful visuals and robust system architecture is the key to a successful digital product.",
+    "cta": "See My Expertise"
+  },
+  "services": {
+    "title_1": "Expertise &",
+    "title_2": "Services",
+    "frontend_title": "Frontend & Mobile Web",
+    "frontend_desc": "Building responsive, interactive, and high-performance interfaces using Vue.js, Nuxt, and Flutter.",
+    "backend_title": "Backend Architecture",
+    "backend_desc": "Designing secure and scalable APIs and server architectures using Python (FastAPI), Golang, and PostgreSQL.",
+    "ai_title": "AI & Smart Solutions",
+    "ai_desc": "Integrating artificial intelligence and Large Language Models (LLM) to create Chatbot ecosystems and smart automations."
+  }
+}
