@@ -4,9 +4,27 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth; /* Tambahkan baris ini */
+  html.lenis,
+  html.lenis body {
+    height: auto;
   }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
   body {
     @apply bg-space-900 text-slate-200 antialiased font-sans;
   }

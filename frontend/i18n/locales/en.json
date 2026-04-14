@@ -22,11 +22,41 @@
   "services": {
     "title_1": "Expertise &",
     "title_2": "Services",
-    "frontend_title": "Frontend & Mobile Web",
-    "frontend_desc": "Building responsive, interactive, and high-performance interfaces using Vue.js, Nuxt, and Flutter.",
-    "backend_title": "Backend Architecture",
-    "backend_desc": "Designing secure and scalable APIs and server architectures using Python (FastAPI), Golang, and PostgreSQL.",
+    "dev_title": "Web & Mobile Development",
+    "dev_desc": "Architecting scalable fullstack applications and responsive cross-platform interfaces using Vue.js, Flutter, FastAPI, and Golang.",
     "ai_title": "AI & Smart Solutions",
-    "ai_desc": "Integrating artificial intelligence and Large Language Models (LLM) to create Chatbot ecosystems and smart automations."
+    "ai_desc": "Integrating artificial intelligence and Large Language Models (LLM) to build intelligent Chatbot ecosystems and smart automations.",
+    "blockchain_title": "Web3 & Blockchain Integration",
+    "blockchain_desc": "Exploring decentralized technologies, developing foundational smart contracts, and integrating Web3 capabilities into modern apps."
+  },
+  "portfolio": {
+    "title_port_1": "Featured",
+    "title_port_2": "Works",
+    "project1_title": "Si-Walu: Election Reporting Portal",
+    "project1_desc": "Designed and developed the frontend for the Integrated Election Violation Reporting System for Bawaslu. Focused on delivering an intuitive UI/UX and seamless real-time data management.",
+    "project2_title": "AI Chatbot Ecosystem",
+    "project2_desc": "Built an intelligent Chatbot ecosystem spanning Web and Mobile platforms. Integrated the Gemini API to power advanced natural language processing and smart automations.",
+    "project3_title": "EduPortal MI Al-Hidayah",
+    "project3_desc": "A comprehensive School Information System featuring secure administrative modules with precise router guards and a public-facing portal for modern school management."
+  },
+  "contact": {
+    "heading_1": "Initiate",
+    "heading_2": "Connection",
+    "subheading": "// Establish Encrypted Uplink",
+    "form": {
+      "name_label": "Name",
+      "email_label": "Email",
+      "subject_label": "Subject",
+      "message_label": "Message",
+      "submit": "Send Signal",
+      "submitting": "Transmitting...",
+      "success": "Signal Delivered. I will respond shortly.",
+      "error": "Connection Failed. Please try again."
+    },
+    "info": {
+      "title": "Base of Operations.",
+      "desc": "Based in Tegal, Central Java. Open for discussions on software architecture, remote collaborations, or just exchanging ideas.",
+      "socials": "// Alt Channels"
+    }
   }
 }

@@ -14,7 +14,7 @@
         class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-5"
       >
         <h1
-          class="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight tracking-wide"
+          class="hero-anim text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight tracking-wide opacity-0"
         >
           {{ $t("home.greeting") }} <br />
           <span
@@ -23,19 +23,23 @@
             Mahfudin Adnan
           </span>
         </h1>
+
         <h2
-          class="text-2xl md:text-3xl font-display font-semibold text-slate-300 h-10"
+          class="hero-anim text-2xl md:text-3xl font-display font-semibold text-slate-300 h-10 opacity-0"
         >
           {{ $t("home.role_prefix") }}
           <span class="text-neon-cyan typewriter-effect">{{
             currentText
           }}</span>
         </h2>
-        <p class="text-slate-400 text-lg leading-relaxed max-w-lg">
+
+        <p
+          class="hero-anim text-slate-400 text-lg leading-relaxed max-w-lg opacity-0"
+        >
           {{ $t("home.description") }}
         </p>
 
-        <div class="flex items-center space-x-4 pt-4">
+        <div class="hero-anim flex items-center space-x-4 pt-4 opacity-0">
           <a
             href="https://github.com/AdnNyx/"
             target="_blank"
@@ -51,7 +55,7 @@
           </a>
         </div>
 
-        <div class="pt-6">
+        <div class="hero-anim pt-6 opacity-0">
           <a
             href="#about"
             class="inline-block px-8 py-3.5 rounded-full bg-neon-cyan text-space-900 font-bold tracking-wide hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.5)]"
@@ -61,7 +65,9 @@
         </div>
       </div>
 
-      <div class="relative flex justify-center items-center mt-12 lg:mt-0">
+      <div
+        class="hero-visual opacity-0 relative flex justify-center items-center mt-12 lg:mt-0"
+      >
         <div
           class="absolute inset-0 bg-gradient-to-tr from-neon-purple/20 to-neon-cyan/20 blur-3xl rounded-full scale-75 pointer-events-none -z-10"
         ></div>
@@ -250,6 +256,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from "vue";
+import gsap from "gsap"; // Import GSAP untuk animasi entrance
+
 const roles = [
   "Software Engineer",
   "AI Solutions Developer",
@@ -284,7 +293,36 @@ const typeEffect = () => {
   timer = setTimeout(typeEffect, typingSpeed);
 };
 
-onMounted(() => typeEffect());
+onMounted(() => {
+  typeEffect();
+
+  // === GSAP ENTRANCE ANIMATION ===
+  // Delay 3.2 detik agar sinkron dan menunggu Welcome Screen selesai
+  const tl = gsap.timeline({ delay: 3.2 });
+
+  // 1. Animasi Teks & Tombol (Muncul berurutan dari bawah)
+  tl.fromTo(
+    ".hero-anim",
+    { y: 40, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power3.out" },
+  );
+
+  // 2. Animasi Visual SVG (Muncul membesar dengan efek memantul lembut)
+  // Dimulai sedikit lebih awal (offset "-=0.8") sebelum teks terakhir selesai muncul
+  tl.fromTo(
+    ".hero-visual",
+    { scale: 0.8, opacity: 0, rotation: -5 },
+    {
+      scale: 1,
+      opacity: 1,
+      rotation: 0,
+      duration: 1.5,
+      ease: "elastic.out(1, 0.7)",
+    },
+    "-=0.8",
+  );
+});
+
 onUnmounted(() => clearTimeout(timer));
 </script>
 
@@ -305,9 +343,7 @@ onUnmounted(() => clearTimeout(timer));
   }
 }
 
-/* Animasi Sirkuit (Jalur Data) */
 .animated-circuits path {
-  /* Membuat garis putus-putus pendek yang mengalir */
   stroke-dasharray: 15 150;
   animation: dataFlow 3s linear infinite;
 }
@@ -321,7 +357,6 @@ onUnmounted(() => clearTimeout(timer));
   }
 }
 
-/* Animasi Inti Chip */
 .chip-core {
   animation: pulse-core 2s ease-in-out infinite alternate;
 }
@@ -336,7 +371,6 @@ onUnmounted(() => clearTimeout(timer));
   }
 }
 
-/* Animasi Kedipan Titik Node */
 .node-pulse {
   animation: node-blink 2s ease-in-out infinite alternate;
 }

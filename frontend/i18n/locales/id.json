@@ -22,11 +22,41 @@
   "services": {
     "title_1": "Keahlian &",
     "title_2": "Layanan",
-    "frontend_title": "Frontend & Mobile Web",
-    "frontend_desc": "Membangun antarmuka yang responsif, interaktif, dan berkinerja tinggi menggunakan Vue.js, Nuxt, dan Flutter.",
-    "backend_title": "Backend Architecture",
-    "backend_desc": "Merancang API dan arsitektur server yang aman dan skalabel menggunakan Python (FastAPI), Golang, dan PostgreSQL.",
+    "dev_title": "Pengembangan Web & Mobile",
+    "dev_desc": "Merancang arsitektur aplikasi fullstack yang tangguh dan antarmuka lintas platform yang responsif menggunakan Vue.js, Flutter, FastAPI, dan Golang.",
     "ai_title": "AI & Solusi Cerdas",
-    "ai_desc": "Mengintegrasikan kecerdasan buatan dan Large Language Models (LLM) untuk menciptakan ekosistem Chatbot dan otomatisasi pintar."
+    "ai_desc": "Mengintegrasikan kecerdasan buatan dan Large Language Models (LLM) untuk menciptakan ekosistem Chatbot yang cerdas dan otomatisasi pintar.",
+    "blockchain_title": "Integrasi Web3 & Blockchain",
+    "blockchain_desc": "Mengeksplorasi teknologi desentralisasi, mengembangkan fondasi smart contract, serta mengintegrasikan kapabilitas Web3 ke dalam aplikasi modern."
+  },
+  "portfolio": {
+    "title_port_1": "Karya",
+    "title_port_2": "Unggulan",
+    "project1_title": "Si-Walu: Portal Pelaporan Pemilu",
+    "project1_desc": "Merancang dan mengembangkan frontend Sistem Informasi Pelaporan Pelanggaran Pemilu Terpadu untuk Bawaslu, fokus pada UI/UX yang intuitif dan manajemen data real-time.",
+    "project2_title": "AI Chatbot Ecosystem",
+    "project2_desc": "Membangun ekosistem Chatbot cerdas berbasis Web dan Mobile App yang diintegrasikan dengan Gemini API untuk pemrosesan bahasa alami yang canggih.",
+    "project3_title": "EduPortal MI Al-Hidayah",
+    "project3_desc": "Sistem Informasi Sekolah komprehensif yang dilengkapi dengan modul administratif (router guards) dan portal publik untuk manajemen sekolah yang modern."
+  },
+  "contact": {
+    "heading_1": "Mulai",
+    "heading_2": "Koneksi",
+    "subheading": "// Buat Jalur Komunikasi Terenkripsi",
+    "form": {
+      "name_label": "Identitas",
+      "email_label": "Surel",
+      "subject_label": "Subjek",
+      "message_label": "Pesan",
+      "submit": "Kirim Sinyal",
+      "submitting": "Mengirim...",
+      "success": "Transmisi Berhasil. Saya akan segera merespon.",
+      "error": "Koneksi Gagal. Silakan coba lagi."
+    },
+    "info": {
+      "title": "Pusat Operasi.",
+      "desc": "Berpusat di Tegal, Jawa Tengah. Saya selalu terbuka untuk diskusi mengenai arsitektur perangkat lunak, kolaborasi jarak jauh, atau sekadar bertukar pikiran.",
+      "socials": "// Transmisi Alternatif"
+    }
   }
 }
