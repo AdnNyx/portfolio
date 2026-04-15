@@ -7,12 +7,12 @@
       class="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-neon-purple/20 rounded-full blur-[120px] pointer-events-none -z-10"
     ></div>
 
-    <div class="max-w-6xl mx-auto px-8 lg:px-12 w-full z-10">
+    <div class="max-w-7xl mx-auto px-8 lg:px-12 w-full z-10">
       <div
         class="flex flex-col items-center lg:items-start text-center lg:text-left mb-16"
       >
         <h2
-          class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-wide"
+          class="contact-anim opacity-0 text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-wide"
         >
           {{ $t("contact.heading_1") }} <br class="hidden lg:block" />
           <span
@@ -21,15 +21,13 @@
             {{ $t("contact.heading_2") }}
           </span>
         </h2>
-        <p
-          class="text-slate-400 font-mono text-sm tracking-widest uppercase mt-2"
-        >
-          {{ $t("contact.subheading") }}
-        </p>
+        <div
+          class="contact-anim opacity-0 w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto lg:mx-0 rounded-full mb-4"
+        ></div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-        <div class="w-full flex flex-col justify-center">
+        <div class="contact-left opacity-0 w-full flex flex-col justify-center">
           <div
             class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden group"
           >
@@ -169,7 +167,7 @@
         </div>
 
         <div
-          class="relative flex flex-col justify-center items-center lg:items-start mt-12 lg:mt-0 w-full"
+          class="contact-right opacity-0 relative flex flex-col justify-center items-center lg:items-start mt-12 lg:mt-0 w-full"
         >
           <div
             ref="mapContainer"
@@ -220,56 +218,49 @@
                   target="_blank"
                   aria-label="GitHub"
                   class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-white hover:text-black hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(255,255,255,0.1)] transition-all duration-300"
-                >
-                  <Icon name="uil:github" class="text-2xl" />
-                </a>
+                  ><Icon name="uil:github" class="text-2xl"
+                /></a>
                 <a
                   href="#"
                   target="_blank"
                   aria-label="LinkedIn"
                   class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(10,102,194,0.2)] transition-all duration-300"
-                >
-                  <Icon name="uil:linkedin" class="text-2xl" />
-                </a>
+                  ><Icon name="uil:linkedin" class="text-2xl"
+                /></a>
                 <a
                   href="mailto:mahfudinadnan@gmail.com"
                   aria-label="Email"
                   class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-neon-cyan hover:border-neon-cyan hover:text-space-900 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(34,211,238,0.2)] transition-all duration-300"
-                >
-                  <Icon name="uil:envelope" class="text-2xl" />
-                </a>
+                  ><Icon name="uil:envelope" class="text-2xl"
+                /></a>
                 <a
                   href="#"
                   target="_blank"
                   aria-label="Instagram"
                   class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:border-transparent hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(188,24,136,0.2)] transition-all duration-300"
-                >
-                  <Icon name="uil:instagram" class="text-2xl" />
-                </a>
+                  ><Icon name="uil:instagram" class="text-2xl"
+                /></a>
                 <a
                   href="#"
                   target="_blank"
                   aria-label="TikTok"
                   class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-black hover:border-neon-cyan hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(34,211,238,0.2)] transition-all duration-300"
-                >
-                  <Icon name="fa6-brands:tiktok" class="text-[20px]" />
-                </a>
+                  ><Icon name="fa6-brands:tiktok" class="text-[20px]"
+                /></a>
                 <a
                   href="#"
                   target="_blank"
                   aria-label="YouTube"
                   class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(255,0,0,0.2)] transition-all duration-300"
-                >
-                  <Icon name="uil:youtube" class="text-2xl" />
-                </a>
+                  ><Icon name="uil:youtube" class="text-2xl"
+                /></a>
                 <a
                   href="#"
                   target="_blank"
                   aria-label="Facebook"
                   class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(24,119,242,0.2)] transition-all duration-300"
-                >
-                  <Icon name="uil:facebook-f" class="text-2xl" />
-                </a>
+                  ><Icon name="uil:facebook-f" class="text-2xl"
+                /></a>
               </div>
             </div>
           </div>
@@ -278,50 +269,97 @@
     </div>
   </section>
 </template>
-<script setup lang="ts">
-import { ref, reactive, computed, onMounted } from "vue";
-import { useI18n } from "vue-i18n";
 
+<script setup lang="ts">
+import { ref, reactive, computed, onMounted, onUnmounted } from "vue";
+import { useI18n } from "vue-i18n";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Language
 const { t } = useI18n();
 
-// Observer for Map
+// Observer
 const mapContainer = ref<HTMLElement | null>(null);
 const isMapVisible = ref(false);
 
 onMounted(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          isMapVisible.value = true;
-          observer.disconnect();
-        }
-      });
-    },
-    { threshold: 0.3 },
-  );
+  if (import.meta.client) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            isMapVisible.value = true;
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
 
-  if (mapContainer.value) {
-    observer.observe(mapContainer.value);
+    if (mapContainer.value) {
+      observer.observe(mapContainer.value);
+    }
   }
 });
 
-// Dotted Map
+// GSAP
+onMounted(() => {
+  if (import.meta.client) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#contact",
+        start: "top 80%",
+        once: true,
+      },
+    });
+
+    tl.fromTo(
+      ".contact-anim",
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.2, stagger: 0.2, ease: "power3.out" },
+    );
+
+    tl.fromTo(
+      ".contact-left",
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.5, ease: "power3.out" },
+      "-=0.8",
+    );
+
+    tl.fromTo(
+      ".contact-right",
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.5, ease: "power3.out" },
+      "<0.2",
+    );
+  }
+});
+
+onUnmounted(() => {
+  if (import.meta.client) {
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+  }
+});
+
+// Map
 const mapGrid = [
-  "0000000000000000000000000000000000000000000000000111111000000000000000",
-  "0000000000000000000000000000000000000000000000001111111100000000000000",
-  "0000000000000000000000000000000000000000000000001111111110000000000000",
-  "0000000000000000000000000000000000000000000000011111111110000000000000",
+  "0000000000000000000000000000000000000000000000000011111100000000000000",
+  "0000000000000000000000000000000000000000000000000111111110000000000000",
+  "0000000000000000000000000000000000000000000000001111111111000000000000",
+  "0000000000000000000000000000000000000000000000011111111111000000000000",
   "0000000000000000000000000000000000000000000000111111111111000000000000",
   "0000000000000000000000000000000000000000000001111111111111000000000000",
   "0000000000000000000000000000000000000000000001111111111110000000000000",
   "0000000000000000000000000000000000000000000011111111111110000000000000",
-  "0000111100111100000000000000000000000000000111111111111111110000000000",
-  "0001111111111111000000000000000000000000011111111111111111111000000000",
-  "0001111111111111110000000000000000000001111111111111111111111100000000",
-  "001111111311111111111101111011110111111111111111111111111111110000000",
-  "0011111132311111111111111111111111111111111111111111111111111110000000",
-  "0111111113111111111111111111111111111111111111111111111111111111000000",
+  "0000000001111100000000000000000000000000000111111111111111110000000000",
+  "0000000111111111000000000000000000000000001111111111111111111000000000",
+  "0000011111111111100000000000000000000000111111111111111111111100000000",
+  "0000111113111111111100000000000000000111111111111111111111111110000000",
+  "0001111132311111111111111100000001111111111111111111111111111110000000",
+  "0011111113111111111111111111111111111111111111111111111111111111000000",
   "0111111111111111111111111111111111111111111111111111111111111111100000",
   "1111111111111111111111111111111111111111111111111111111111111111110000",
   "1111111111111111111111111111111111111111111111111111111111111111110000",
@@ -382,7 +420,7 @@ const getDotClass = (type: string) => {
   return "";
 };
 
-// LOGIKA FORM
+// Form
 const WEB3FORMS_ACCESS_KEY = "YOUR_KEY_HERE";
 const formData = reactive({ name: "", email: "", subject: "", message: "" });
 const isSubmitting = ref(false);
@@ -404,7 +442,6 @@ const submitForm = async () => {
     });
     if (response.ok) {
       isSuccess.value = true;
-      // Menggunakan i18n untuk status message
       statusMessage.value = t("contact.form.success");
       Object.assign(formData, {
         name: "",
@@ -417,7 +454,6 @@ const submitForm = async () => {
     }
   } catch (e) {
     isSuccess.value = false;
-    // Menggunakan i18n untuk status message
     statusMessage.value = t("contact.form.error");
   } finally {
     isSubmitting.value = false;
@@ -429,7 +465,6 @@ const submitForm = async () => {
 </script>
 
 <style scoped>
-/* ANIMASI DOTTED MAP SCROLL-TRIGGERED */
 .dot-land {
   fill: #22d3ee;
 }
@@ -452,7 +487,6 @@ const submitForm = async () => {
   }
 }
 
-/* PERBAIKAN FORM - ANTI FLICK & BUG AUTOFILL CHROME */
 .custom-input {
   outline: none !important;
   box-shadow: none !important;

@@ -8,13 +8,13 @@
     ></div>
 
     <div
-      class="max-w-6xl mx-auto px-8 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10"
+      class="max-w-7xl mx-auto px-8 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10"
     >
       <div
-        class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-5"
+        class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6"
       >
         <h1
-          class="hero-anim text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight tracking-wide opacity-0"
+          class="hero-title opacity-0 text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight tracking-wide"
         >
           {{ $t("home.greeting") }} <br />
           <span
@@ -25,7 +25,7 @@
         </h1>
 
         <h2
-          class="hero-anim text-2xl md:text-3xl font-display font-semibold text-slate-300 h-10 opacity-0"
+          class="hero-role opacity-0 text-2xl md:text-3xl font-display font-semibold text-slate-300 h-10"
         >
           {{ $t("home.role_prefix") }}
           <span class="text-neon-cyan typewriter-effect">{{
@@ -34,50 +34,50 @@
         </h2>
 
         <p
-          class="hero-anim text-slate-400 text-lg leading-relaxed max-w-lg opacity-0"
+          class="hero-desc opacity-0 text-slate-400 text-lg leading-relaxed max-w-lg"
         >
           {{ $t("home.description") }}
         </p>
 
-        <div class="hero-anim flex items-center space-x-4 pt-4 opacity-0">
-          <a
-            href="https://github.com/AdnNyx/"
-            target="_blank"
-            class="w-12 h-12 rounded-full border-2 border-neon-cyan/50 flex items-center justify-center text-neon-cyan hover:bg-neon-cyan hover:text-space-900 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.2)]"
-          >
-            <Icon name="uil:github" class="text-2xl" />
-          </a>
-          <a
-            href="#"
-            class="w-12 h-12 rounded-full border-2 border-neon-cyan/50 flex items-center justify-center text-neon-cyan hover:bg-neon-cyan hover:text-space-900 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.2)]"
-          >
-            <Icon name="uil:linkedin" class="text-2xl" />
-          </a>
-        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-6 pt-6">
+          <div class="hero-cta opacity-0">
+            <a
+              href="#about"
+              class="inline-block px-8 py-3.5 rounded-full bg-neon-cyan text-space-900 font-bold tracking-wide hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.5)]"
+            >
+              {{ $t("home.more_about") }}
+            </a>
+          </div>
 
-        <div class="hero-anim pt-6 opacity-0">
-          <a
-            href="#about"
-            class="inline-block px-8 py-3.5 rounded-full bg-neon-cyan text-space-900 font-bold tracking-wide hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.5)]"
-          >
-            {{ $t("home.more_about") }}
-          </a>
+          <div class="hero-socials opacity-0 flex items-center space-x-4">
+            <a
+              href="https://github.com/AdnNyx/"
+              target="_blank"
+              class="w-12 h-12 rounded-full border-2 border-neon-cyan/50 flex items-center justify-center text-neon-cyan hover:bg-neon-cyan hover:text-space-900 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.2)]"
+            >
+              <Icon name="uil:github" class="text-2xl" />
+            </a>
+            <a
+              href="#"
+              class="w-12 h-12 rounded-full border-2 border-neon-cyan/50 flex items-center justify-center text-neon-cyan hover:bg-neon-cyan hover:text-space-900 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.2)]"
+            >
+              <Icon name="uil:linkedin" class="text-2xl" />
+            </a>
+          </div>
         </div>
       </div>
 
-      <div
-        class="hero-visual opacity-0 relative flex justify-center items-center mt-12 lg:mt-0"
-      >
+      <div class="relative flex justify-center items-center mt-12 lg:mt-0">
         <div
           class="absolute inset-0 bg-gradient-to-tr from-neon-purple/20 to-neon-cyan/20 blur-3xl rounded-full scale-75 pointer-events-none -z-10"
         ></div>
 
         <div
-          class="relative w-full max-w-[400px] md:max-w-[500px] aspect-square flex items-center justify-center z-10 hover:scale-105 transition-transform duration-700 ease-out"
+          class="hero-visual opacity-0 relative w-full max-w-[400px] md:max-w-[500px] aspect-square flex items-center justify-center z-10 hover:scale-105 transition-transform duration-700 ease-out"
         >
           <svg
             viewBox="0 0 400 400"
-            class="w-full h-full drop-shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+            class="w-full h-full drop-shadow-[0_0_20px_rgba(34,211,238,0.2)]"
           >
             <defs>
               <linearGradient
@@ -90,14 +90,6 @@
                 <stop offset="0%" stop-color="#22d3ee" />
                 <stop offset="100%" stop-color="#c084fc" />
               </linearGradient>
-
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-                <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
             </defs>
 
             <g
@@ -135,64 +127,6 @@
               <path d="M 150 250 L 80 320" />
             </g>
 
-            <circle cx="100" cy="50" r="4" fill="#c084fc" class="node-pulse" />
-            <circle
-              cx="350"
-              cy="100"
-              r="4"
-              fill="#22d3ee"
-              class="node-pulse"
-              style="animation-delay: 0.5s"
-            />
-            <circle
-              cx="300"
-              cy="350"
-              r="4"
-              fill="#c084fc"
-              class="node-pulse"
-              style="animation-delay: 1s"
-            />
-            <circle
-              cx="50"
-              cy="300"
-              r="4"
-              fill="#22d3ee"
-              class="node-pulse"
-              style="animation-delay: 1.5s"
-            />
-            <circle
-              cx="80"
-              cy="80"
-              r="4"
-              fill="#22d3ee"
-              class="node-pulse"
-              style="animation-delay: 0.2s"
-            />
-            <circle
-              cx="320"
-              cy="80"
-              r="4"
-              fill="#c084fc"
-              class="node-pulse"
-              style="animation-delay: 0.7s"
-            />
-            <circle
-              cx="320"
-              cy="320"
-              r="4"
-              fill="#22d3ee"
-              class="node-pulse"
-              style="animation-delay: 1.2s"
-            />
-            <circle
-              cx="80"
-              cy="320"
-              r="4"
-              fill="#c084fc"
-              class="node-pulse"
-              style="animation-delay: 1.7s"
-            />
-
             <g transform="translate(150, 150)">
               <rect
                 width="100"
@@ -222,7 +156,6 @@
                 stroke="#c084fc"
                 stroke-width="2"
               />
-
               <rect
                 x="20"
                 y="20"
@@ -234,7 +167,6 @@
                 stroke-width="1"
                 class="chip-core"
               />
-
               <text
                 x="50"
                 y="58"
@@ -243,7 +175,7 @@
                 font-weight="bold"
                 fill="#22d3ee"
                 text-anchor="middle"
-                filter="url(#glow)"
+                class="text-glow"
               >
                 AI
               </text>
@@ -257,7 +189,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import gsap from "gsap"; // Import GSAP untuk animasi entrance
+import gsap from "gsap";
 
 const roles = [
   "Software Engineer",
@@ -296,37 +228,66 @@ const typeEffect = () => {
 onMounted(() => {
   typeEffect();
 
-  // === GSAP ENTRANCE ANIMATION ===
-  // Delay 3.2 detik agar sinkron dan menunggu Welcome Screen selesai
-  const tl = gsap.timeline({ delay: 3.2 });
+  if (import.meta.client) {
+    const tl = gsap.timeline({ delay: 0.1 });
 
-  // 1. Animasi Teks & Tombol (Muncul berurutan dari bawah)
-  tl.fromTo(
-    ".hero-anim",
-    { y: 40, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power3.out" },
-  );
+    tl.fromTo(
+      ".hero-title",
+      { opacity: 0, scale: 1.1, filter: "blur(15px)" },
+      {
+        opacity: 1,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 1.8,
+        ease: "power4.out",
+      },
+    );
 
-  // 2. Animasi Visual SVG (Muncul membesar dengan efek memantul lembut)
-  // Dimulai sedikit lebih awal (offset "-=0.8") sebelum teks terakhir selesai muncul
-  tl.fromTo(
-    ".hero-visual",
-    { scale: 0.8, opacity: 0, rotation: -5 },
-    {
-      scale: 1,
-      opacity: 1,
-      rotation: 0,
-      duration: 1.5,
-      ease: "elastic.out(1, 0.7)",
-    },
-    "-=0.8",
-  );
+    tl.fromTo(
+      ".hero-role",
+      { opacity: 0, x: -30 },
+      { opacity: 1, x: 0, duration: 1.2, ease: "power3.out" },
+      "-=1.2",
+    );
+
+    tl.fromTo(
+      ".hero-desc",
+      { opacity: 0, x: 30 },
+      { opacity: 1, x: 0, duration: 1.2, ease: "power3.out" },
+      "-=1.0",
+    );
+
+    tl.fromTo(
+      [".hero-cta", ".hero-socials"],
+      { opacity: 0 },
+      { opacity: 1, duration: 1.0, stagger: 0.2, ease: "linear" },
+      "-=0.8",
+    );
+
+    tl.fromTo(
+      ".hero-visual",
+      { opacity: 0, scale: 0.5, rotation: -45, y: 50 },
+      {
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+        y: 0,
+        duration: 2.0,
+        ease: "power4.out",
+      },
+      "-=2.0",
+    );
+  }
 });
 
 onUnmounted(() => clearTimeout(timer));
 </script>
 
 <style scoped>
+.hero-title {
+  will-change: transform, opacity, filter;
+}
+
 .typewriter-effect {
   border-right: 2px solid #22d3ee;
   padding-right: 4px;
@@ -346,6 +307,8 @@ onUnmounted(() => clearTimeout(timer));
 .animated-circuits path {
   stroke-dasharray: 15 150;
   animation: dataFlow 3s linear infinite;
+  will-change: stroke-dashoffset;
+  transform: translateZ(0);
 }
 
 @keyframes dataFlow {
@@ -359,6 +322,8 @@ onUnmounted(() => clearTimeout(timer));
 
 .chip-core {
   animation: pulse-core 2s ease-in-out infinite alternate;
+  will-change: fill, box-shadow;
+  transform: translateZ(0);
 }
 
 @keyframes pulse-core {
@@ -371,18 +336,7 @@ onUnmounted(() => clearTimeout(timer));
   }
 }
 
-.node-pulse {
-  animation: node-blink 2s ease-in-out infinite alternate;
-}
-
-@keyframes node-blink {
-  0% {
-    opacity: 0.3;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
+.text-glow {
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
 }
 </style>

@@ -6,6 +6,11 @@
     "portfolio": "Portofolio",
     "contact": "Kontak"
   },
+  "footer": {
+    "copyright": "© 2026 Mahfudin Adnan. Hak cipta dilindungi undang-undang.",
+    "terms": "Syarat & Ketentuan",
+    "privacy": "Kebijakan Privasi"
+  },
   "home": {
     "greeting": "Halo, Saya",
     "role_prefix": "Dan saya seorang",

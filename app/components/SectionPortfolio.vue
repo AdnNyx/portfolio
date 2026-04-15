@@ -12,17 +12,19 @@
 
     <div class="container mx-auto px-6 md:px-12 lg:px-16 relative z-10">
       <div class="flex flex-col items-center text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+        <h2
+          class="port-anim opacity-0 text-4xl md:text-5xl font-display font-bold text-white mb-6 hw-accel"
+        >
           {{ $t("portfolio.title_port_1") }}
           <span class="text-neon-cyan">{{ $t("portfolio.title_port_2") }}</span>
         </h2>
 
         <div
-          class="w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full mb-10"
+          class="port-anim opacity-0 w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full mb-10 hw-accel"
         ></div>
 
         <div
-          class="flex p-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full w-max"
+          class="port-anim opacity-0 flex p-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full w-max hw-accel"
         >
           <button
             @click="activeTab = 'projects'"
@@ -49,29 +51,75 @@
         </div>
       </div>
 
-      <transition name="fade" mode="out-in">
-        <PortfolioProjects v-if="activeTab === 'projects'" key="projects" />
-        <PortfolioSkills v-else-if="activeTab === 'skills'" key="skills" />
-      </transition>
+      <div class="port-anim opacity-0 w-full hw-accel relative min-h-[400px]">
+        <transition name="fade" mode="out-in">
+          <PortfolioProjects v-if="activeTab === 'projects'" key="projects" />
+          <PortfolioSkills v-else-if="activeTab === 'skills'" key="skills" />
+        </transition>
+      </div>
     </div>
   </section>
 </template>
+
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const activeTab = ref<"projects" | "skills">("projects");
+
+onMounted(() => {
+  if (import.meta.server) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#portfolio-section",
+      start: "top 75%",
+    },
+  });
+
+  tl.fromTo(
+    ".port-anim",
+    { y: 40, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out",
+    },
+  );
+});
+
+onUnmounted(() => {
+  if (import.meta.client) {
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+  }
+});
 </script>
 
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
   transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.fade-enter-from,
+
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(15px);
+}
+
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(-15px);
+}
+
+.hw-accel {
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 </style>

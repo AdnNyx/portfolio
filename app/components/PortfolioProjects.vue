@@ -18,7 +18,7 @@
               )
             "
             @mouseleave="stopHoverSlideshow"
-            class="portfolio-card relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex flex-col group hover:-translate-y-2 hover:border-neon-cyan/50 hover:shadow-[0_10px_40px_rgba(34,211,238,0.15)] transition-all duration-500 overflow-hidden cursor-pointer"
+            class="portfolio-card opacity-0 relative bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex flex-col group hover:-translate-y-2 hover:border-neon-cyan/50 hover:shadow-[0_10px_40px_rgba(34,211,238,0.15)] transition-all duration-500 overflow-hidden cursor-pointer"
           >
             <div
               class="w-full h-48 bg-space-800 rounded-2xl mb-6 border border-white/5 overflow-hidden relative group-hover:border-white/10 transition-colors"
@@ -91,7 +91,7 @@
         >
           <button
             @click="loadMore"
-            class="px-8 py-3 rounded-full border border-neon-cyan/50 text-neon-cyan font-mono text-sm hover:bg-neon-cyan hover:text-space-900 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.1)] hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]"
+            class="btn-load-more opacity-0 px-8 py-3 rounded-full border border-neon-cyan/50 text-neon-cyan font-mono text-sm hover:bg-neon-cyan hover:text-space-900 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.1)] hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]"
           >
             Show More Projects
           </button>
@@ -101,18 +101,18 @@
       <div
         v-else
         key="detail"
-        class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl relative"
+        class="bg-slate-900/60 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative"
       >
         <button
           @click="closeProject"
-          class="flex items-center gap-2 text-slate-400 hover:text-neon-cyan transition-colors mb-8 font-mono text-sm w-max"
+          class="project-detail-anim opacity-0 flex items-center gap-2 text-slate-400 hover:text-neon-cyan transition-colors mb-8 font-mono text-sm w-max"
         >
           <Icon name="uil:arrow-left" class="text-lg" /> Back to Projects
         </button>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div
-            class="w-full aspect-video bg-space-800 rounded-2xl border border-white/10 flex items-center justify-center relative overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] group cursor-crosshair"
+            class="project-detail-anim opacity-0 w-full aspect-video bg-space-800 rounded-2xl border border-white/10 flex items-center justify-center relative overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] group cursor-crosshair"
             @mousemove="handleMouseMove"
             @mouseenter="isHovering = true"
             @mouseleave="isHovering = false"
@@ -207,26 +207,32 @@
 
           <div class="flex flex-col justify-center">
             <h3
-              class="text-3xl md:text-4xl font-display font-bold text-white mb-4"
+              class="project-detail-anim opacity-0 text-3xl md:text-4xl font-display font-bold text-white mb-4"
             >
               {{ $t(selectedProject.titleKey) }}
             </h3>
 
-            <div class="flex flex-wrap gap-2 mb-6">
+            <div
+              class="project-detail-anim opacity-0 flex flex-wrap gap-2 mb-6"
+            >
               <span
                 v-for="tech in selectedProject.stack"
                 :key="tech"
-                class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-neon-cyan uppercase"
+                class="px-3 py-1 bg-slate-800 border border-white/10 rounded-full text-xs font-mono text-neon-cyan uppercase"
               >
                 {{ tech }}
               </span>
             </div>
 
-            <p class="text-slate-300 text-lg leading-relaxed mb-10">
+            <p
+              class="project-detail-anim opacity-0 text-slate-300 text-lg leading-relaxed mb-10"
+            >
               {{ $t(selectedProject.descKey) }}
             </p>
 
-            <div class="flex flex-wrap gap-4 mt-auto">
+            <div
+              class="project-detail-anim opacity-0 flex flex-wrap gap-4 mt-auto"
+            >
               <a
                 v-if="
                   selectedProject.liveLink &&
@@ -265,9 +271,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, watch, nextTick } from "vue";
+import gsap from "gsap";
 
-// INTERFACE TS
 interface Project {
   titleKey: string;
   descKey: string;
@@ -277,7 +283,6 @@ interface Project {
   repoLink: string;
 }
 
-// STATE MANAGEMENT
 const selectedProject = ref<Project | null>(null);
 const currentImageIndex = ref(0);
 const visibleCount = ref(3);
@@ -287,88 +292,11 @@ const zoomX = ref(50);
 const zoomY = ref(50);
 const mouseX = ref(0);
 const mouseY = ref(0);
-
 const activeHoverKey = ref<string | null>(null);
 const activeHoverIndex = ref(0);
 let hoverInterval: ReturnType<typeof setInterval> | null = null;
 
-const startHoverSlideshow = (projectKey: string, totalImages: number) => {
-  if (totalImages <= 1) return;
-
-  activeHoverKey.value = projectKey;
-  activeHoverIndex.value = 0;
-
-  hoverInterval = setInterval(() => {
-    activeHoverIndex.value = (activeHoverIndex.value + 1) % totalImages;
-  }, 2000);
-};
-
-const stopHoverSlideshow = () => {
-  activeHoverKey.value = null;
-  activeHoverIndex.value = 0;
-  if (hoverInterval) {
-    clearInterval(hoverInterval);
-    hoverInterval = null;
-  }
-};
-
-const handleMouseMove = (e: MouseEvent) => {
-  if (!imageContainer.value) return;
-  const rect = imageContainer.value.getBoundingClientRect();
-  mouseX.value = e.clientX - rect.left;
-  mouseY.value = e.clientY - rect.top;
-  zoomX.value = (mouseX.value / rect.width) * 100;
-  zoomY.value = (mouseY.value / rect.height) * 100;
-};
-
-// ACTIONS
-const loadMore = () => {
-  visibleCount.value += 3;
-};
-
-const openProject = (project: Project) => {
-  stopHoverSlideshow();
-  selectedProject.value = project;
-  currentImageIndex.value = 0;
-  isHovering.value = false;
-};
-
-const closeProject = () => {
-  selectedProject.value = null;
-};
-
-const nextImage = () => {
-  if (selectedProject.value && selectedProject.value.images.length > 0) {
-    currentImageIndex.value =
-      (currentImageIndex.value + 1) % selectedProject.value.images.length;
-  }
-};
-
-const prevImage = () => {
-  if (selectedProject.value && selectedProject.value.images.length > 0) {
-    currentImageIndex.value =
-      (currentImageIndex.value - 1 + selectedProject.value.images.length) %
-      selectedProject.value.images.length;
-  }
-};
-
-const imagesAssets = import.meta.glob("~/assets/image/*", {
-  eager: true,
-  import: "default",
-});
-
-const getImageUrl = (imageName: string | undefined) => {
-  if (!imageName) return "";
-  const path = `/assets/image/${imageName}`;
-  for (const key in imagesAssets) {
-    if (key.endsWith(path)) {
-      return imagesAssets[key] as string;
-    }
-  }
-  return "";
-};
-
-// Data
+// Data Projects
 const projects: Project[] = [
   {
     titleKey: "portfolio.project1_title",
@@ -417,14 +345,139 @@ const projects: Project[] = [
 const visibleProjects = computed(() => {
   return projects.slice(0, visibleCount.value);
 });
+
+// ANIMASI GSAP
+const animateGrid = () => {
+  if (import.meta.client) {
+    nextTick(() => {
+      gsap.fromTo(
+        ".portfolio-card",
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power3.out" },
+      );
+      gsap.fromTo(
+        ".btn-load-more",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, delay: 0.3, ease: "power3.out" },
+      );
+    });
+  }
+};
+
+const animateDetail = () => {
+  if (import.meta.client) {
+    nextTick(() => {
+      gsap.fromTo(
+        ".project-detail-anim",
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out" },
+      );
+    });
+  }
+};
+
+onMounted(() => {
+  animateGrid();
+});
+
+// PERBAIKAN TIMING: Menambah timeout menjadi 350ms agar menunggu transisi CSS Vue selesai
+watch(selectedProject, (newVal) => {
+  if (!newVal) {
+    // Menunggu tampilan Grid dimuat sepenuhnya oleh Vue
+    setTimeout(() => {
+      animateGrid();
+    }, 350);
+  } else {
+    // Menunggu tampilan Detail dimuat sepenuhnya oleh Vue
+    setTimeout(() => {
+      animateDetail();
+    }, 350);
+  }
+});
+
+const startHoverSlideshow = (projectKey: string, totalImages: number) => {
+  if (totalImages <= 1) return;
+  activeHoverKey.value = projectKey;
+  activeHoverIndex.value = 0;
+  hoverInterval = setInterval(() => {
+    activeHoverIndex.value = (activeHoverIndex.value + 1) % totalImages;
+  }, 2000);
+};
+
+const stopHoverSlideshow = () => {
+  activeHoverKey.value = null;
+  activeHoverIndex.value = 0;
+  if (hoverInterval) {
+    clearInterval(hoverInterval);
+    hoverInterval = null;
+  }
+};
+
+const handleMouseMove = (e: MouseEvent) => {
+  if (!imageContainer.value) return;
+  const rect = imageContainer.value.getBoundingClientRect();
+  mouseX.value = e.clientX - rect.left;
+  mouseY.value = e.clientY - rect.top;
+  zoomX.value = (mouseX.value / rect.width) * 100;
+  zoomY.value = (mouseY.value / rect.height) * 100;
+};
+
+// PERBAIKAN: Memanggil animasi ulang saat tombol Load More ditekan
+const loadMore = () => {
+  visibleCount.value += 3;
+  setTimeout(() => {
+    animateGrid();
+  }, 50);
+};
+
+const openProject = (project: Project) => {
+  stopHoverSlideshow();
+  selectedProject.value = project;
+  currentImageIndex.value = 0;
+  isHovering.value = false;
+};
+
+const closeProject = () => {
+  selectedProject.value = null;
+};
+
+const nextImage = () => {
+  if (selectedProject.value && selectedProject.value.images.length > 0) {
+    currentImageIndex.value =
+      (currentImageIndex.value + 1) % selectedProject.value.images.length;
+  }
+};
+
+const prevImage = () => {
+  if (selectedProject.value && selectedProject.value.images.length > 0) {
+    currentImageIndex.value =
+      (currentImageIndex.value - 1 + selectedProject.value.images.length) %
+      selectedProject.value.images.length;
+  }
+};
+
+const imagesAssets = import.meta.glob("~/assets/image/*", {
+  eager: true,
+  import: "default",
+});
+
+const getImageUrl = (imageName: string | undefined) => {
+  if (!imageName) return "";
+  const path = `/assets/image/${imageName}`;
+  for (const key in imagesAssets) {
+    if (key.endsWith(path)) return imagesAssets[key] as string;
+  }
+  return "";
+};
 </script>
 
 <style scoped>
+/* Durasi fade out di sini adalah 0.3s (300ms). Karena itu kita set Timeout 350ms */
 .fade-leave-active {
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .fade-enter-active {
-  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .fade-enter-from {
   opacity: 0;
@@ -437,15 +490,15 @@ const visibleProjects = computed(() => {
 
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .list-enter-from {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(30px);
 }
 .list-leave-to {
   opacity: 0;
-  transform: translateY(-40px);
+  transform: translateY(-30px);
 }
 
 .carousel-fade-enter-active,

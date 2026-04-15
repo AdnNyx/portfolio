@@ -6,6 +6,11 @@
     "portfolio": "Portfolio",
     "contact": "Contact"
   },
+  "footer": {
+    "copyright": "© 2026 Mahfudin Adnan. All rights reserved.",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy"
+  },
   "home": {
     "greeting": "Hello, It's Me",
     "role_prefix": "And I'm a",
@@ -42,7 +47,6 @@
   "contact": {
     "heading_1": "Initiate",
     "heading_2": "Connection",
-    "subheading": "// Establish Encrypted Uplink",
     "form": {
       "name_label": "Name",
       "email_label": "Email",
@@ -56,7 +60,7 @@
     "info": {
       "title": "Base of Operations.",
       "desc": "Based in Tegal, Central Java. Open for discussions on software architecture, remote collaborations, or just exchanging ideas.",
-      "socials": "// Alt Channels"
+      "socials": "Alt Channels"
     }
   }
 }

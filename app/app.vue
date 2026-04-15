@@ -2,8 +2,6 @@
   <div
     class="min-h-screen bg-[#0b1120] text-slate-300 overflow-x-hidden flex flex-col font-sans"
   >
-    <WelcomeScreen />
-
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -11,18 +9,18 @@
 </template>
 
 <style>
-/* CSS Global untuk membunuh scrollbar horizontal dan ruang putih secara permanen */
-html,
+html {
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
+}
 body {
   overflow-x: hidden;
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #0b1120; /* Warna gelap agar kalaupun ada pantulan, tidak berwarna putih */
+  background-color: #0b1120;
   -webkit-font-smoothing: antialiased;
 }
-
-/* Mempercantik Scrollbar Vertikal agar menyatu dengan tema dark mode */
 ::-webkit-scrollbar {
   width: 10px;
 }
