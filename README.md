@@ -21,6 +21,10 @@ https://github.com/AdnNyx/portfolio
 Nandev Portfolio is a premium modern web portfolio designed to create an immersive and cinematic user experience through advanced frontend technologies, smooth motion systems, and futuristic UI aesthetics.
 
 This project focuses on:
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Modern frontend architecture
 - Smooth animation experience
 - High-end creative developer visuals
@@ -33,6 +37,10 @@ This project focuses on:
 # 🌌 Features
 
 ## 🎨 Modern UI/UX
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Futuristic space-inspired design
 - Glassmorphism interface
 - Dynamic gradients
@@ -41,6 +49,10 @@ This project focuses on:
 - Interactive visual elements
 
 ## ⚡ Advanced Animations
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Lenis smooth scrolling
 - GSAP animation system
 - Scroll-triggered transitions
@@ -50,6 +62,10 @@ This project focuses on:
 - Layered reveal animations
 
 ## 🧠 User Experience
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Responsive across all devices
 - Smooth navigation flow
 - Optimized interaction feedback
@@ -61,22 +77,38 @@ This project focuses on:
 # 🛠️ Tech Stack
 
 ## Frontend
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Vue 3
 - Vite
 - TypeScript
 - Vue Router
 
 ## Styling
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Tailwind CSS
 - CSS Variables
 - Responsive Design System
 
 ## Animation
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Lenis
 - GSAP
 - ScrollTrigger
 
 ## Deployment
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Vercel
 
 ---
@@ -101,7 +133,11 @@ portfolio/
 ├── package.json
 ├── vite.config.ts
 └── README.md
+<<<<<<< HEAD
 ````
+=======
+```
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 
 ---
 
@@ -153,6 +189,7 @@ npm run preview
 
 This project is designed around:
 
+<<<<<<< HEAD
 * Futuristic aesthetics
 * Smooth cinematic motion
 * Space-tech atmosphere
@@ -165,6 +202,20 @@ The interface combines:
 * Motion storytelling
 * Premium interaction design
 * Elegant visual hierarchy
+=======
+- Futuristic aesthetics
+- Smooth cinematic motion
+- Space-tech atmosphere
+- Creative developer identity
+- Immersive frontend experience
+
+The interface combines:
+
+- Modern UI systems
+- Motion storytelling
+- Premium interaction design
+- Elegant visual hierarchy
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 
 ---
 
@@ -172,6 +223,7 @@ The interface combines:
 
 Implemented optimizations include:
 
+<<<<<<< HEAD
 * Lazy loading
 * Optimized rendering
 * GPU-friendly animations
@@ -179,6 +231,15 @@ Implemented optimizations include:
 * Efficient asset loading
 * Responsive image handling
 * Lightweight architecture
+=======
+- Lazy loading
+- Optimized rendering
+- GPU-friendly animations
+- Code splitting
+- Efficient asset loading
+- Responsive image handling
+- Lightweight architecture
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 
 ---
 
@@ -186,10 +247,17 @@ Implemented optimizations include:
 
 Fully optimized for:
 
+<<<<<<< HEAD
 * Desktop
 * Tablet
 * Mobile devices
 * Modern browsers
+=======
+- Desktop
+- Tablet
+- Mobile devices
+- Modern browsers
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 
 ---
 
@@ -197,6 +265,7 @@ Fully optimized for:
 
 Planned improvements:
 
+<<<<<<< HEAD
 * Interactive 3D scenes
 * Particle systems
 * Advanced shader effects
@@ -204,6 +273,15 @@ Planned improvements:
 * Blog system
 * Multi-language support
 * Enhanced micro-interactions
+=======
+- Interactive 3D scenes
+- Particle systems
+- Advanced shader effects
+- CMS integration
+- Blog system
+- Multi-language support
+- Enhanced micro-interactions
+>>>>>>> d5684cd (feat(frontend): improve UI interactions)
 
 ---
 
