@@ -1,19 +1,19 @@
 <template>
   <section
     id="services-wrapper"
-    class="relative text-white w-full min-h-screen pb-20 pt-24 lg:pt-32"
+    class="relative text-white w-full min-h-screen pb-20 pt-24 lg:pt-32 overflow-hidden"
   >
     <div
       class="w-full flex flex-col items-center justify-center pb-16 z-40 relative px-8"
     >
       <h2
-        class="text-4xl md:text-5xl font-display font-bold text-white tracking-wide text-center"
+        class="service-anim opacity-0 text-4xl md:text-5xl font-display font-bold text-white tracking-wide text-center hw-accel"
       >
         {{ $t("services.title_1") }}
         <span class="text-neon-cyan">{{ $t("services.title_2") }}</span>
       </h2>
       <div
-        class="w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mt-5 rounded-full"
+        class="service-anim opacity-0 w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mt-5 rounded-full hw-accel"
       ></div>
     </div>
 
@@ -21,7 +21,7 @@
       class="w-full max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-20"
     >
       <div
-        class="relative bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col group hover:-translate-y-2 hover:border-neon-cyan/50 hover:shadow-[0_15px_40px_rgba(34,211,238,0.15)] transition-all duration-500 overflow-hidden"
+        class="service-anim opacity-0 relative bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col group hover:-translate-y-2 hover:border-neon-cyan/50 hover:shadow-[0_15px_40px_rgba(34,211,238,0.15)] transition-all duration-500 overflow-hidden hw-accel"
       >
         <div
           class="absolute -top-20 -right-20 w-48 h-48 bg-neon-cyan/20 blur-[60px] rounded-full pointer-events-none group-hover:bg-neon-cyan/30 transition-colors duration-500"
@@ -78,7 +78,7 @@
       </div>
 
       <div
-        class="relative bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col group hover:-translate-y-2 hover:border-white/50 hover:shadow-[0_15px_40px_rgba(255,255,255,0.1)] transition-all duration-500 overflow-hidden"
+        class="service-anim opacity-0 relative bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col group hover:-translate-y-2 hover:border-white/50 hover:shadow-[0_15px_40px_rgba(255,255,255,0.1)] transition-all duration-500 overflow-hidden hw-accel"
       >
         <div
           class="absolute -top-20 -right-20 w-48 h-48 bg-white/10 blur-[60px] rounded-full pointer-events-none group-hover:bg-white/20 transition-colors duration-500"
@@ -135,7 +135,7 @@
       </div>
 
       <div
-        class="relative bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col group hover:-translate-y-2 hover:border-neon-purple/50 hover:shadow-[0_15px_40px_rgba(192,132,252,0.15)] transition-all duration-500 overflow-hidden"
+        class="service-anim opacity-0 relative bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col group hover:-translate-y-2 hover:border-neon-purple/50 hover:shadow-[0_15px_40px_rgba(192,132,252,0.15)] transition-all duration-500 overflow-hidden hw-accel"
       >
         <div
           class="absolute -top-20 -right-20 w-48 h-48 bg-neon-purple/20 blur-[60px] rounded-full pointer-events-none group-hover:bg-neon-purple/30 transition-colors duration-500"
@@ -195,6 +195,45 @@
 </template>
 
 <script setup lang="ts">
-// Komponen murni CSS/Tailwind.
-// Semua logika GSAP dan state terkait telah dibersihkan untuk performa maksimal.
+import { onMounted, onUnmounted } from "vue";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+onMounted(() => {
+  if (import.meta.server) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#services-wrapper",
+      start: "top 75%",
+    },
+  });
+
+  tl.fromTo(
+    ".service-anim",
+    { y: 40, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out",
+    },
+  );
+});
+
+onUnmounted(() => {
+  if (import.meta.client) {
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+  }
+});
 </script>
+
+<style scoped>
+.hw-accel {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+</style>
