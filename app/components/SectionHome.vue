@@ -39,29 +39,27 @@
           {{ $t("home.description") }}
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center gap-6 pt-6">
-          <div class="hero-cta opacity-0">
+        <div class="flex flex-col sm:flex-row items-center gap-4 lg:gap-6 pt-6">
+          <div
+            class="hero-cta opacity-0 flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+          >
             <a
               href="#about"
-              class="inline-block px-8 py-3.5 rounded-full bg-neon-cyan text-space-900 font-bold tracking-wide hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.5)]"
+              class="flex justify-center items-center px-8 py-3.5 rounded-full bg-neon-cyan text-space-900 font-bold tracking-wide hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.5)] whitespace-nowrap"
             >
               {{ $t("home.more_about") }}
             </a>
-          </div>
 
-          <div class="hero-socials opacity-0 flex items-center space-x-4">
             <a
-              href="https://github.com/AdnNyx/"
-              target="_blank"
-              class="w-12 h-12 rounded-full border-2 border-neon-cyan/50 flex items-center justify-center text-neon-cyan hover:bg-neon-cyan hover:text-space-900 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.2)]"
+              href="/cv/cv-adnan.pdf"
+              download="CV_Mahfudin_Adnan.pdf"
+              class="group flex justify-center items-center gap-2 px-8 py-3.5 rounded-full border-2 border-neon-cyan text-neon-cyan font-bold tracking-wide hover:bg-neon-cyan hover:text-space-900 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.1)] whitespace-nowrap"
             >
-              <Icon name="uil:github" class="text-2xl" />
-            </a>
-            <a
-              href="#"
-              class="w-12 h-12 rounded-full border-2 border-neon-cyan/50 flex items-center justify-center text-neon-cyan hover:bg-neon-cyan hover:text-space-900 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.2)]"
-            >
-              <Icon name="uil:linkedin" class="text-2xl" />
+              <span>{{ $t("home.download_cv") }}</span>
+              <Icon
+                name="uil:file-download-alt"
+                class="text-xl group-hover:animate-bounce"
+              />
             </a>
           </div>
         </div>

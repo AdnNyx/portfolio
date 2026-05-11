@@ -6,7 +6,7 @@
       <div
         v-for="(skill, index) in skills"
         :key="index"
-        class="skill-card opacity-0 hw-accel flex flex-col items-center justify-center gap-3 bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-2xl p-5 hover:-translate-y-2 hover:bg-slate-800/80 hover:border-neon-cyan/50 hover:shadow-[0_10px_25px_rgba(34,211,238,0.2)] transition-all duration-300 group cursor-default relative overflow-hidden"
+        class="flex flex-col items-center justify-center gap-3 bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-2xl p-5 hover:-translate-y-2 hover:bg-slate-800/80 hover:border-neon-cyan/50 hover:shadow-[0_10px_25px_rgba(34,211,238,0.2)] transition-all duration-300 group cursor-default relative overflow-hidden"
       >
         <div
           class="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
@@ -35,9 +35,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, nextTick } from "vue";
-import gsap from "gsap";
-
 const skills = [
   { name: "HTML5", icon: "logos:html-5" },
   { name: "CSS3", icon: "logos:css-3" },
@@ -58,39 +55,4 @@ const skills = [
   { name: "Flutter", icon: "logos:flutter" },
   { name: "Golang", icon: "logos:go" },
 ];
-
-onMounted(() => {
-  if (import.meta.client) {
-    // nextTick memastikan Vue sudah selesai menyisipkan komponen ini ke DOM
-    // setelah transisi tab dari induknya selesai
-    nextTick(() => {
-      gsap.fromTo(
-        ".skill-card",
-        {
-          y: 30,
-          opacity: 0,
-          scale: 0.8,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          stagger: 0.04, // Jeda yang sangat cepat antar kartu
-          ease: "back.out(1.5)", // Memberikan efek membal (bouncy) yang elegan
-          delay: 0.1, // Sedikit jeda agar tidak bertabrakan dengan animasi tab
-        },
-      );
-    });
-  }
-});
 </script>
-
-<style scoped>
-/* HARDWARE ACCELERATION */
-/* Sangat penting agar efek stagger GSAP berjumlah banyak tidak membuat frame drop */
-.hw-accel {
-  will-change: transform, opacity;
-  transform: translateZ(0);
-}
-</style>

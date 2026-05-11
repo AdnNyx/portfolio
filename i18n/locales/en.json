@@ -15,7 +15,8 @@
     "greeting": "Hello, It's Me",
     "role_prefix": "And I'm a",
     "description": "I am an enthusiastic software developer dedicated to building modern, functional, and user-friendly web applications.",
-    "more_about": "More About Me"
+    "more_about": "More About Me",
+    "download_cv": "Download CV"
   },
   "about": {
     "title_1": "About",
@@ -37,12 +38,22 @@
   "portfolio": {
     "title_port_1": "Featured",
     "title_port_2": "Works",
-    "project1_title": "Si-Walu: Election Reporting Portal",
-    "project1_desc": "Designed and developed the frontend for the Integrated Election Violation Reporting System for Bawaslu. Focused on delivering an intuitive UI/UX and seamless real-time data management.",
-    "project2_title": "AI Chatbot Ecosystem",
-    "project2_desc": "Built an intelligent Chatbot ecosystem spanning Web and Mobile platforms. Integrated the Gemini API to power advanced natural language processing and smart automations.",
+    "project1_title": "Satyavrata Company Profile",
+    "project1_desc": "A premier trading company profile showcasing high-quality Indonesian export products to global markets in the Middle East and Asia, emphasizing scalable and sustainable supply chains.",
+    "project2_title": "Novel Platform",
+    "project2_desc": "A robust reading ecosystem built with Next.js and backed by a highly performant Python and PostgreSQL infrastructure, delivering a seamless experience for novel enthusiasts.",
     "project3_title": "EduPortal MI Al-Hidayah",
-    "project3_desc": "A comprehensive School Information System featuring secure administrative modules with precise router guards and a public-facing portal for modern school management."
+    "project3_desc": "An official school information system featuring secure administrative modules, modern router guards, and a public-facing portal for streamlined educational management.",
+    "project4_title": "Interactive Personal Portfolio",
+    "project4_desc": "A highly interactive and modern web portfolio featuring GSAP animations, 3D elements, and full internationalization to showcase my engineering capabilities.",
+    "project5_title": "QR Code Generator",
+    "project5_desc": "A fast and reliable web utility for generating custom QR codes instantly, designed for a variety of digital and print use cases.",
+    "project6_title": "Universal Video Downloader",
+    "project6_desc": "A powerful utility built with Python and Flask to effortlessly extract and download media content from multiple online video platforms.",
+    "project7_title": "Anime Streaming App",
+    "project7_desc": "A dynamic streaming platform utilizing third-party REST APIs to fetch, search, and stream the latest episodes seamlessly.",
+    "project8_title": "AI Background Remover",
+    "project8_desc": "An AI-powered image processing tool that accurately removes and isolates subjects from their backgrounds in a matter of seconds."
   },
   "contact": {
     "heading_1": "Initiate",

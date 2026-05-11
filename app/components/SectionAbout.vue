@@ -14,7 +14,7 @@
       class="max-w-7xl mx-auto px-8 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center z-10"
     >
       <div
-        class="about-photo opacity-0 relative flex justify-center items-center mt-10 lg:mt-0 w-full py-10 lg:py-0"
+        class="about-photo opacity-0 relative flex justify-center items-center mt-10 lg:mt-0 w-full py-10 lg:py-0 hw-accel"
       >
         <div
           class="absolute w-[320px] h-[320px] md:w-[420px] md:h-[420px] rounded-full border-[2px] border-dashed border-slate-500/50 ring-spin-slow hw-accel"
@@ -32,7 +32,7 @@
           ></div>
 
           <img
-            src="assets/image/profile.jpg"
+            src="~/assets/image/profile.webp"
             alt="Mahfudin Adnan"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hw-accel"
           />
@@ -41,35 +41,35 @@
 
       <div class="space-y-6 text-center lg:text-left">
         <h2
-          class="about-anim opacity-0 text-4xl md:text-5xl font-display font-bold text-white"
+          class="about-anim opacity-0 text-4xl md:text-5xl font-display font-bold text-white hw-accel"
         >
           {{ $t("about.title_1") }}
           <span class="text-neon-cyan">{{ $t("about.title_2") }}</span>
         </h2>
 
         <div
-          class="about-anim opacity-0 w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto lg:mx-0 rounded-full mb-8"
+          class="about-anim opacity-0 w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto lg:mx-0 rounded-full mb-8 hw-accel"
         ></div>
 
-        <div class="space-y-5 text-lg leading-relaxed">
-          <p class="about-anim opacity-0">
+        <div
+          class="space-y-5 text-lg leading-relaxed text-left max-w-2xl mx-auto lg:mx-0"
+        >
+          <p id="about-text-container" class="about-anim opacity-0 m-0">
             <template
               v-for="(word, index) in $t('about.p1').split(' ')"
               :key="'p1-' + index"
             >
-              <span class="about-word text-[#334155] inline-block">{{
+              <span class="about-word text-slate-700 inline-block hw-accel">{{
                 word
               }}</span
               >{{ " " }}
             </template>
-          </p>
-
-          <p class="about-anim opacity-0">
+            <br /><br />
             <template
               v-for="(word, index) in $t('about.p2').split(' ')"
               :key="'p2-' + index"
             >
-              <span class="about-word text-[#334155] inline-block">{{
+              <span class="about-word text-slate-700 inline-block hw-accel">{{
                 word
               }}</span
               >{{ " " }}
@@ -77,9 +77,9 @@
           </p>
         </div>
 
-        <div class="about-anim opacity-0 pt-6">
+        <div class="about-anim opacity-0 pt-6 hw-accel">
           <a
-            href="#services-pinned-container"
+            href="#services-wrapper"
             class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-medium hover:bg-neon-cyan hover:text-space-900 hover:border-neon-cyan transition-all duration-300"
           >
             {{ $t("about.cta") }} <Icon name="uil:arrow-down" class="text-lg" />
@@ -99,36 +99,38 @@ onMounted(() => {
   if (import.meta.client) {
     gsap.registerPlugin(ScrollTrigger);
 
-    const tl = gsap.timeline({
+    const tlEntrance = gsap.timeline({
       scrollTrigger: {
         trigger: "#about",
         start: "top 75%",
       },
     });
 
-    tl.fromTo(
+    tlEntrance.fromTo(
       ".about-photo",
-      { x: -40, opacity: 0, scale: 0.95 },
-      { x: 0, opacity: 1, scale: 1, duration: 1.2, ease: "power3.out" },
+      { x: -40, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, ease: "power2.out" },
     );
 
-    tl.fromTo(
+    tlEntrance.fromTo(
       ".about-anim",
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.0, stagger: 0.15, ease: "power2.out" },
-      "-=0.8",
-    );
-
-    tl.to(
-      ".about-word",
-      {
-        color: "#cbd5e1",
-        duration: 0.1,
-        stagger: 0.04,
-        ease: "none",
-      },
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power2.out" },
       "-=0.6",
     );
+
+    gsap.to(".about-word", {
+      color: "#f8fafc",
+      stagger: 0.1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#about-text-container",
+        start: "top 80%",
+        end: "bottom 70%",
+
+        scrub: 0.5,
+      },
+    });
   }
 });
 
@@ -141,7 +143,7 @@ onUnmounted(() => {
 
 <style scoped>
 .hw-accel {
-  will-change: transform, opacity;
+  will-change: transform, opacity, color;
   transform: translateZ(0);
 }
 

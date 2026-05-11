@@ -15,7 +15,8 @@
     "greeting": "Halo, Saya",
     "role_prefix": "Dan saya seorang",
     "description": "Saya adalah seorang pengembang perangkat lunak yang antusias dalam membangun aplikasi web modern, fungsional, dan ramah pengguna.",
-    "more_about": "Lebih Banyak Tentang Saya"
+    "more_about": "Lebih Banyak Tentang Saya",
+    "download_cv": "Unduh CV"
   },
   "about": {
     "title_1": "Tentang",
@@ -37,12 +38,22 @@
   "portfolio": {
     "title_port_1": "Karya",
     "title_port_2": "Unggulan",
-    "project1_title": "Si-Walu: Portal Pelaporan Pemilu",
-    "project1_desc": "Merancang dan mengembangkan frontend Sistem Informasi Pelaporan Pelanggaran Pemilu Terpadu untuk Bawaslu, fokus pada UI/UX yang intuitif dan manajemen data real-time.",
-    "project2_title": "AI Chatbot Ecosystem",
-    "project2_desc": "Membangun ekosistem Chatbot cerdas berbasis Web dan Mobile App yang diintegrasikan dengan Gemini API untuk pemrosesan bahasa alami yang canggih.",
+    "project1_title": "Profil Perusahaan Satyavrata",
+    "project1_desc": "Website profil perusahaan ekspor yang menampilkan produk berkualitas dari Indonesia untuk pasar Timur Tengah dan Asia, menekankan rantai pasok yang konsisten dan berkelanjutan.",
+    "project2_title": "Platform Membaca Novel",
+    "project2_desc": "Ekosistem membaca yang dibangun dengan Next.js dan didukung oleh infrastruktur backend Python dan PostgreSQL yang tangguh, memberikan pengalaman yang mulus bagi para penggemar novel.",
     "project3_title": "EduPortal MI Al-Hidayah",
-    "project3_desc": "Sistem Informasi Sekolah komprehensif yang dilengkapi dengan modul administratif (router guards) dan portal publik untuk manajemen sekolah yang modern."
+    "project3_desc": "Sistem informasi sekolah resmi yang dilengkapi modul administrasi yang aman, proteksi rute modern, dan portal publik untuk manajemen pendidikan yang efisien.",
+    "project4_title": "Portofolio Personal Interaktif",
+    "project4_desc": "Website portofolio modern yang sangat interaktif, menampilkan animasi GSAP, elemen 3D, dan dukungan multibahasa penuh untuk memamerkan keahlian pengembangan saya.",
+    "project5_title": "Generator Kode QR",
+    "project5_desc": "Utilitas web yang cepat dan andal untuk menghasilkan kode QR kustom secara instan, dirancang untuk berbagai kebutuhan digital dan cetak.",
+    "project6_title": "Pengunduh Video Universal",
+    "project6_desc": "Aplikasi utilitas tangguh yang dikembangkan menggunakan Python dan Flask untuk mengekstrak dan mengunduh konten media dari berbagai platform video online dengan mudah.",
+    "project7_title": "Aplikasi Streaming Anime",
+    "project7_desc": "Platform streaming dinamis yang memanfaatkan REST API pihak ketiga untuk mengambil, mencari, dan memutar episode terbaru dengan lancar tanpa hambatan.",
+    "project8_title": "Penghapus Latar Belakang AI",
+    "project8_desc": "Alat pemrosesan gambar berbasis AI yang secara akurat memisahkan dan menghapus subjek dari latar belakang aslinya hanya dalam hitungan detik."
   },
   "contact": {
     "heading_1": "Mulai",

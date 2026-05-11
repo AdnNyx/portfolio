@@ -6,9 +6,10 @@
           name="list"
           tag="div"
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          appear
         >
           <div
-            v-for="project in visibleProjects"
+            v-for="(project, index) in visibleProjects"
             :key="project.titleKey"
             @click="openProject(project)"
             @mouseenter="
@@ -18,14 +19,15 @@
               )
             "
             @mouseleave="stopHoverSlideshow"
-            class="portfolio-card opacity-0 relative bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex flex-col group hover:-translate-y-2 hover:border-neon-cyan/50 hover:shadow-[0_10px_40px_rgba(34,211,238,0.15)] transition-all duration-500 overflow-hidden cursor-pointer"
+            :style="{ '--stagger-delay': `${(index % 3) * 0.15}s` }"
+            class="relative bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex flex-col group hover:-translate-y-2 hover:border-neon-cyan/50 hover:shadow-[0_10px_40px_rgba(34,211,238,0.15)] hover-transition overflow-hidden cursor-pointer hw-accel"
           >
             <div
-              class="w-full h-48 bg-space-800 rounded-2xl mb-6 border border-white/5 overflow-hidden relative group-hover:border-white/10 transition-colors"
+              class="w-full aspect-[2/1] bg-space-800 rounded-2xl mb-6 border border-white/5 overflow-hidden relative group-hover:border-white/10 transition-colors"
             >
               <template v-if="project.images && project.images.length > 0">
                 <div
-                  class="absolute inset-0 transition-transform duration-[3000ms] ease-out group-hover:scale-110"
+                  class="absolute inset-0 transition-transform duration-[2000ms] ease-out group-hover:scale-105"
                 >
                   <transition name="carousel-fade">
                     <img
@@ -44,7 +46,7 @@
                         )
                       "
                       :alt="$t(project.titleKey)"
-                      class="absolute inset-0 w-full h-full object-cover object-top"
+                      class="absolute inset-0 w-full h-full object-cover object-center"
                     />
                   </transition>
                 </div>
@@ -85,17 +87,20 @@
           </div>
         </transition-group>
 
-        <div
-          v-if="visibleCount < projects.length"
-          class="flex justify-center mt-12"
-        >
-          <button
-            @click="loadMore"
-            class="btn-load-more opacity-0 px-8 py-3 rounded-full border border-neon-cyan/50 text-neon-cyan font-mono text-sm hover:bg-neon-cyan hover:text-space-900 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.1)] hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]"
+        <transition name="fade" appear>
+          <div
+            v-if="visibleCount < projects.length"
+            class="flex justify-center mt-12"
+            style="animation-delay: 0.6s"
           >
-            Show More Projects
-          </button>
-        </div>
+            <button
+              @click="loadMore"
+              class="px-8 py-3 rounded-full border border-neon-cyan/50 text-neon-cyan font-mono text-sm hover:bg-neon-cyan hover:text-space-900 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.1)] hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]"
+            >
+              Show More Projects
+            </button>
+          </div>
+        </transition>
       </div>
 
       <div
@@ -105,14 +110,14 @@
       >
         <button
           @click="closeProject"
-          class="project-detail-anim opacity-0 flex items-center gap-2 text-slate-400 hover:text-neon-cyan transition-colors mb-8 font-mono text-sm w-max"
+          class="css-stagger-1 flex items-center gap-2 text-slate-400 hover:text-neon-cyan transition-colors mb-8 font-mono text-sm w-max"
         >
           <Icon name="uil:arrow-left" class="text-lg" /> Back to Projects
         </button>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div
-            class="project-detail-anim opacity-0 w-full aspect-video bg-space-800 rounded-2xl border border-white/10 flex items-center justify-center relative overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] group cursor-crosshair"
+            class="css-stagger-2 w-full aspect-[2/1] lg:aspect-video bg-space-800 rounded-2xl border border-white/10 flex items-center justify-center relative overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] group cursor-crosshair hw-accel"
             @mousemove="handleMouseMove"
             @mouseenter="isHovering = true"
             @mouseleave="isHovering = false"
@@ -126,7 +131,7 @@
                   :key="currentImageIndex"
                   :src="getImageUrl(selectedProject.images[currentImageIndex])"
                   :alt="$t(selectedProject.titleKey)"
-                  class="absolute inset-0 w-full h-full object-cover object-top"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
                 />
               </transition>
 
@@ -141,7 +146,7 @@
               >
                 <img
                   :src="getImageUrl(selectedProject.images[currentImageIndex])"
-                  class="absolute inset-0 w-full h-full object-cover object-top"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
                   :style="{
                     transform: 'scale(1.8)',
                     transformOrigin: `${zoomX}% ${zoomY}%`,
@@ -196,25 +201,16 @@
                 </div>
               </template>
             </template>
-
-            <div
-              v-else
-              class="text-slate-500 font-mono text-sm text-center px-4 z-10"
-            >
-              [ Main Image/Mockup for {{ $t(selectedProject.titleKey) }} ]
-            </div>
           </div>
 
           <div class="flex flex-col justify-center">
             <h3
-              class="project-detail-anim opacity-0 text-3xl md:text-4xl font-display font-bold text-white mb-4"
+              class="css-stagger-3 text-3xl md:text-4xl font-display font-bold text-white mb-4"
             >
               {{ $t(selectedProject.titleKey) }}
             </h3>
 
-            <div
-              class="project-detail-anim opacity-0 flex flex-wrap gap-2 mb-6"
-            >
+            <div class="css-stagger-4 flex flex-wrap gap-2 mb-6">
               <span
                 v-for="tech in selectedProject.stack"
                 :key="tech"
@@ -225,14 +221,12 @@
             </div>
 
             <p
-              class="project-detail-anim opacity-0 text-slate-300 text-lg leading-relaxed mb-10"
+              class="css-stagger-5 text-slate-300 text-lg leading-relaxed mb-10"
             >
               {{ $t(selectedProject.descKey) }}
             </p>
 
-            <div
-              class="project-detail-anim opacity-0 flex flex-wrap gap-4 mt-auto"
-            >
+            <div class="css-stagger-6 flex flex-wrap gap-4 mt-auto">
               <a
                 v-if="
                   selectedProject.liveLink &&
@@ -271,8 +265,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, watch, nextTick } from "vue";
-import gsap from "gsap";
+import { ref, computed } from "vue";
 
 interface Project {
   titleKey: string;
@@ -301,98 +294,71 @@ const projects: Project[] = [
   {
     titleKey: "portfolio.project1_title",
     descKey: "portfolio.project1_desc",
-    images: [
-      "pelaporan.png",
-      "pelaporan_1.png",
-      "pelaporan_2.png",
-      "pelaporan_3.png",
-      "pelaporan_4.png",
-      "pelaporan_5.png",
-      "pelaporan_6.png",
-      "pelaporan_7.png",
-      "pelaporan_8.png",
-    ],
-    stack: ["Next.js", "JavaScript", "Tailwind CSS", "PHP", "Laravel"],
+    images: ["company.webp"],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Lenis"],
     liveLink: "/notfound",
-    repoLink: "https://github.com/AdnNyx/PelaporanPelanggaran",
+    repoLink: "/notfound",
   },
   {
     titleKey: "portfolio.project2_title",
     descKey: "portfolio.project2_desc",
-    images: ["chatbot.png"],
-    stack: ["Gemini API", "FastAPI", "Flutter", "Vue.js"],
-    liveLink: "",
-    repoLink: "https://github.com/yourusername/ai-chatbot",
+    images: [],
+    stack: ["Next.js", "TypeScript", "Python", "FastAPI", "PostgreSQL"],
+    liveLink: "/notfound",
+    repoLink: "https://github.com/AdnNyx/NovelPlatform",
   },
   {
     titleKey: "portfolio.project3_title",
     descKey: "portfolio.project3_desc",
-    images: ["eduportal.png", "eduportal2.png", "eduportal3.png"],
-    stack: ["Vue.js", "Vue Router", "PostgreSQL", "Golang"],
-    liveLink: "https://mi-alhidayah.example.com",
-    repoLink: "https://github.com/yourusername/eduportal",
+    images: ["school.webp"],
+    stack: ["Vue.js", "PostgreSQL", "Golang"],
+    liveLink: "-alhidayah-kemuning.vercel.app",
+    repoLink: "https://github.com/AdnNyx/SchoolWebsite",
   },
   {
     titleKey: "portfolio.project4_title",
     descKey: "portfolio.project4_desc",
+    images: ["portfolio.webp"],
+    stack: ["Nuxt", "Tailwind CSS", "Lenis", "GSAP"],
+    liveLink: "https://nandev-kappa.vercel.app",
+    repoLink: "https://github.com/AdnNyx/portfolio",
+  },
+  {
+    titleKey: "portfolio.project5_title",
+    descKey: "portfolio.project5_desc",
+    images: ["qrcodegenerator.webp"],
+    stack: ["React.js", "Tailwind CSS", "Flask"],
+    liveLink: "https://qrcodegenerator-gilt.vercel.app",
+    repoLink: "https://github.com/AdnNyx/QRCodeGenerator",
+  },
+  {
+    titleKey: "portfolio.project6_title",
+    descKey: "portfolio.project6_desc",
+    images: ["downloader.webp"],
+    stack: ["Python", "Flask"],
+    liveLink: "https://universal-vid-down.vercel.app",
+    repoLink: "https://github.com/AdnNyx/universal-vid-down",
+  },
+  {
+    titleKey: "portfolio.project7_title",
+    descKey: "portfolio.project7_desc",
     images: [],
-    stack: ["React", "Next.js", "MongoDB", "Tailwind"],
-    liveLink: "https://example.com",
-    repoLink: "https://github.com",
+    stack: ["Vue.js", "Nuxt", "REST API"],
+    liveLink: "",
+    repoLink: "",
+  },
+  {
+    titleKey: "portfolio.project8_title",
+    descKey: "portfolio.project8_desc",
+    images: [],
+    stack: ["Python", "TensorFlow", "React"],
+    liveLink: "",
+    repoLink: "",
   },
 ];
 
 const visibleProjects = computed(() => {
   return projects.slice(0, visibleCount.value);
-});
-
-// ANIMASI GSAP
-const animateGrid = () => {
-  if (import.meta.client) {
-    nextTick(() => {
-      gsap.fromTo(
-        ".portfolio-card",
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power3.out" },
-      );
-      gsap.fromTo(
-        ".btn-load-more",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, delay: 0.3, ease: "power3.out" },
-      );
-    });
-  }
-};
-
-const animateDetail = () => {
-  if (import.meta.client) {
-    nextTick(() => {
-      gsap.fromTo(
-        ".project-detail-anim",
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out" },
-      );
-    });
-  }
-};
-
-onMounted(() => {
-  animateGrid();
-});
-
-// PERBAIKAN TIMING: Menambah timeout menjadi 350ms agar menunggu transisi CSS Vue selesai
-watch(selectedProject, (newVal) => {
-  if (!newVal) {
-    // Menunggu tampilan Grid dimuat sepenuhnya oleh Vue
-    setTimeout(() => {
-      animateGrid();
-    }, 350);
-  } else {
-    // Menunggu tampilan Detail dimuat sepenuhnya oleh Vue
-    setTimeout(() => {
-      animateDetail();
-    }, 350);
-  }
 });
 
 const startHoverSlideshow = (projectKey: string, totalImages: number) => {
@@ -422,12 +388,8 @@ const handleMouseMove = (e: MouseEvent) => {
   zoomY.value = (mouseY.value / rect.height) * 100;
 };
 
-// PERBAIKAN: Memanggil animasi ulang saat tombol Load More ditekan
 const loadMore = () => {
   visibleCount.value += 3;
-  setTimeout(() => {
-    animateGrid();
-  }, 50);
 };
 
 const openProject = (project: Project) => {
@@ -472,33 +434,37 @@ const getImageUrl = (imageName: string | undefined) => {
 </script>
 
 <style scoped>
-/* Durasi fade out di sini adalah 0.3s (300ms). Karena itu kita set Timeout 350ms */
+/* Vue Fade */
+.fade-enter-active,
 .fade-leave-active {
-  transition: all 0.3s ease-in-out;
-}
-.fade-enter-active {
-  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .fade-enter-from {
   opacity: 0;
-  transform: translateY(15px) scale(0.99);
+  transform: translateY(15px);
 }
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(-15px) scale(0.99);
+  transform: translateY(-15px);
 }
 
-.list-enter-active,
+/* Vue List Transition */
+.list-move {
+  transition: transform 0.8s ease;
+}
+
+.list-enter-active {
+  transition: opacity 1s ease-in-out;
+  transition-delay: var(--stagger-delay, 0s);
+}
+
 .list-leave-active {
-  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.4s ease-in-out;
 }
-.list-enter-from {
-  opacity: 0;
-  transform: translateY(30px);
-}
+
+.list-enter-from,
 .list-leave-to {
   opacity: 0;
-  transform: translateY(-30px);
 }
 
 .carousel-fade-enter-active,
@@ -508,5 +474,58 @@ const getImageUrl = (imageName: string | undefined) => {
 .carousel-fade-enter-from,
 .carousel-fade-leave-to {
   opacity: 0;
+}
+
+.hover-transition {
+  transition-property: transform, border-color, box-shadow;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom CSS Stagger Animations */
+.css-stagger-1,
+.css-stagger-2,
+.css-stagger-3,
+.css-stagger-4,
+.css-stagger-5,
+.css-stagger-6 {
+  opacity: 0;
+  animation: smoothReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.css-stagger-1 {
+  animation-delay: 0.1s;
+}
+.css-stagger-2 {
+  animation-delay: 0.2s;
+}
+.css-stagger-3 {
+  animation-delay: 0.3s;
+}
+.css-stagger-4 {
+  animation-delay: 0.4s;
+}
+.css-stagger-5 {
+  animation-delay: 0.5s;
+}
+.css-stagger-6 {
+  animation-delay: 0.6s;
+}
+
+@keyframes smoothReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optimasi Akselerasi Hardware */
+.hw-accel {
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 </style>
