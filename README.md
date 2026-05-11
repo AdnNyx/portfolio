@@ -4,7 +4,7 @@
 
 ### Futuristic Developer Portfolio Experience
 
-Modern portfolio website built with Vue 3, Tailwind CSS v4, Lenis smooth scrolling, and cinematic animations inspired by futuristic space-tech interfaces.
+Modern portfolio website built with Vue 3, Tailwind CSS, Lenis smooth scrolling, and cinematic animations inspired by futuristic space-tech interfaces.
 
 🌐 Live Demo  
 https://nandev-kappa.vercel.app/
@@ -67,7 +67,7 @@ This project focuses on:
 - Vue Router
 
 ## Styling
-- Tailwind CSS v4
+- Tailwind CSS
 - CSS Variables
 - Responsive Design System
 
