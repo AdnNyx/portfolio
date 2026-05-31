@@ -41,7 +41,7 @@
 
         <div class="flex flex-col sm:flex-row items-center gap-4 lg:gap-6 pt-6">
           <div
-            class="hero-cta opacity-0 flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+            class="hero-cta opacity-0 flex flex-col sm:flex-row gap-4 w-full sm:w-auto hw-accel"
           >
             <a
               href="#about"
@@ -65,7 +65,9 @@
         </div>
       </div>
 
-      <div class="relative flex justify-center items-center mt-12 lg:mt-0">
+      <div
+        class="relative hidden lg:flex justify-center items-center mt-12 lg:mt-0"
+      >
         <div
           class="absolute inset-0 bg-gradient-to-tr from-neon-purple/20 to-neon-cyan/20 blur-3xl rounded-full scale-75 pointer-events-none -z-10"
         ></div>
@@ -187,7 +189,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import gsap from "gsap";
+import { useAnimations } from "~/composables/useAnimations";
+
+const { animateSlide, animateBlurReveal, cleanupAnimations } = useAnimations();
 
 const roles = [
   "Software Engineer",
@@ -227,61 +231,28 @@ onMounted(() => {
   typeEffect();
 
   if (import.meta.client) {
-    const tl = gsap.timeline({ delay: 0.1 });
-
-    tl.fromTo(
-      ".hero-title",
-      { opacity: 0, scale: 1.1, filter: "blur(15px)" },
-      {
-        opacity: 1,
-        scale: 1,
-        filter: "blur(0px)",
-        duration: 1.8,
-        ease: "power4.out",
-      },
-    );
-
-    tl.fromTo(
-      ".hero-role",
-      { opacity: 0, x: -30 },
-      { opacity: 1, x: 0, duration: 1.2, ease: "power3.out" },
-      "-=1.2",
-    );
-
-    tl.fromTo(
-      ".hero-desc",
-      { opacity: 0, x: 30 },
-      { opacity: 1, x: 0, duration: 1.2, ease: "power3.out" },
-      "-=1.0",
-    );
-
-    tl.fromTo(
-      [".hero-cta", ".hero-socials"],
-      { opacity: 0 },
-      { opacity: 1, duration: 1.0, stagger: 0.2, ease: "linear" },
-      "-=0.8",
-    );
-
-    tl.fromTo(
-      ".hero-visual",
-      { opacity: 0, scale: 0.5, rotation: -45, y: 50 },
-      {
-        opacity: 1,
-        scale: 1,
-        rotation: 0,
-        y: 0,
-        duration: 2.0,
-        ease: "power4.out",
-      },
-      "-=2.0",
-    );
+    animateSlide(".hero-title", 0, 100, 0.1);
+    animateSlide(".hero-role", 0, 100, 0.3);
+    animateSlide(".hero-desc", 0, 100, 0.5);
+    animateSlide([".hero-cta", ".hero-socials"], 0, 100, 0.7, 0.2);
+    animateBlurReveal(".hero-visual", 0.6);
   }
 });
 
-onUnmounted(() => clearTimeout(timer));
+onUnmounted(() => {
+  clearTimeout(timer);
+  if (import.meta.client) {
+    cleanupAnimations();
+  }
+});
 </script>
 
 <style scoped>
+.hw-accel {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
 .hero-title {
   will-change: transform, opacity, filter;
 }

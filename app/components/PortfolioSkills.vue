@@ -6,35 +6,46 @@
       <div
         v-for="(skill, index) in skills"
         :key="index"
-        class="flex flex-col items-center justify-center gap-3 bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-2xl p-5 hover:-translate-y-2 hover:bg-slate-800/80 hover:border-neon-cyan/50 hover:shadow-[0_10px_25px_rgba(34,211,238,0.2)] transition-all duration-300 group cursor-default relative overflow-hidden"
+        class="skill-anim opacity-0 hw-accel h-full"
       >
         <div
-          class="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-        ></div>
-
-        <div
-          class="w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 relative z-10"
+          class="h-full flex flex-col items-center justify-center gap-3 bg-slate-900/70 border border-white/5 rounded-2xl p-5 md:hover:-translate-y-2 md:hover:bg-slate-800/80 md:hover:border-neon-cyan/50 md:hover:shadow-[0_10px_25px_rgba(34,211,238,0.2)] transition-all duration-300 group cursor-default relative overflow-hidden"
         >
-          <Icon
-            :name="skill.icon"
-            class="text-4xl drop-shadow-md grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-            :class="
-              skill.icon.includes('nextjs') ? 'bg-white rounded-full' : ''
-            "
-          />
+          <div
+            class="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+          ></div>
+
+          <div
+            class="w-12 h-12 flex items-center justify-center md:group-hover:scale-110 transition-transform duration-300 relative z-10"
+          >
+            <Icon
+              :name="skill.icon"
+              class="text-4xl text-white drop-shadow-md"
+              :class="
+                skill.icon.includes('nextjs')
+                  ? 'bg-white rounded-full p-0.5'
+                  : ''
+              "
+            />
+          </div>
+
+          <span
+            class="text-xs md:text-sm font-mono font-medium text-slate-300 md:group-hover:text-neon-cyan transition-colors text-center line-clamp-1 relative z-10"
+          >
+            {{ skill.name }}
+          </span>
         </div>
-
-        <span
-          class="text-xs md:text-sm font-mono font-medium text-slate-400 group-hover:text-neon-cyan transition-colors text-center line-clamp-1 relative z-10"
-        >
-          {{ skill.name }}
-        </span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { onMounted, onUnmounted, nextTick } from "vue";
+import { useAnimations } from "~/composables/useAnimations";
+
+const { animateSlide, cleanupAnimations } = useAnimations();
+
 const skills = [
   { name: "HTML5", icon: "logos:html-5" },
   { name: "CSS3", icon: "logos:css-3" },
@@ -55,4 +66,27 @@ const skills = [
   { name: "Flutter", icon: "logos:flutter" },
   { name: "Golang", icon: "logos:go" },
 ];
+
+onMounted(() => {
+  if (import.meta.client) {
+    nextTick(() => {
+      requestAnimationFrame(() => {
+        animateSlide(".skill-anim", 0, 40, 0.1, 0.05);
+      });
+    });
+  }
+});
+
+onUnmounted(() => {
+  if (import.meta.client) {
+    cleanupAnimations();
+  }
+});
 </script>
+
+<style scoped>
+.hw-accel {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+</style>

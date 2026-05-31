@@ -12,7 +12,7 @@
         class="flex flex-col items-center lg:items-start text-center lg:text-left mb-16"
       >
         <h2
-          class="contact-anim opacity-0 text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-wide"
+          class="contact-anim opacity-0 hw-accel text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-wide"
         >
           {{ $t("contact.heading_1") }} <br class="hidden lg:block" />
           <span
@@ -22,12 +22,14 @@
           </span>
         </h2>
         <div
-          class="contact-anim opacity-0 w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto lg:mx-0 rounded-full mb-4"
+          class="contact-anim opacity-0 hw-accel w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto lg:mx-0 rounded-full mb-4"
         ></div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-        <div class="contact-left opacity-0 w-full flex flex-col justify-center">
+        <div
+          class="contact-left opacity-0 hw-accel w-full flex flex-col justify-center"
+        >
           <div
             class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden group"
           >
@@ -40,81 +42,89 @@
               class="flex flex-col gap-6 relative z-10"
             >
               <div class="grid grid-cols-1 gap-6">
+                <div class="form-item-anim opacity-0 hw-accel w-full">
+                  <div
+                    class="relative bg-slate-950/50 rounded-xl border border-slate-700/50 overflow-hidden focus-within:border-neon-cyan focus-within:ring-1 focus-within:ring-neon-cyan transition-all duration-300"
+                  >
+                    <input
+                      type="text"
+                      v-model="formData.name"
+                      required
+                      id="name"
+                      class="peer w-full bg-transparent px-5 pt-7 pb-2 text-white placeholder-transparent focus:outline-none custom-input"
+                      :placeholder="$t('contact.form.name_label')"
+                    />
+                    <label
+                      for="name"
+                      class="absolute left-5 top-4 text-[10px] font-mono text-slate-400 uppercase tracking-widest transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-xs peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-neon-cyan pointer-events-none"
+                    >
+                      {{ $t("contact.form.name_label") }}
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-item-anim opacity-0 hw-accel w-full">
+                  <div
+                    class="relative bg-slate-950/50 rounded-xl border border-slate-700/50 overflow-hidden focus-within:border-neon-cyan focus-within:ring-1 focus-within:ring-neon-cyan transition-all duration-300"
+                  >
+                    <input
+                      type="email"
+                      v-model="formData.email"
+                      required
+                      id="email"
+                      class="peer w-full bg-transparent px-5 pt-7 pb-2 text-white placeholder-transparent focus:outline-none custom-input"
+                      :placeholder="$t('contact.form.email_label')"
+                    />
+                    <label
+                      for="email"
+                      class="absolute left-5 top-4 text-[10px] font-mono text-slate-400 uppercase tracking-widest transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-xs peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-neon-cyan pointer-events-none"
+                    >
+                      {{ $t("contact.form.email_label") }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-item-anim opacity-0 hw-accel w-full">
                 <div
                   class="relative bg-slate-950/50 rounded-xl border border-slate-700/50 overflow-hidden focus-within:border-neon-cyan focus-within:ring-1 focus-within:ring-neon-cyan transition-all duration-300"
                 >
                   <input
                     type="text"
-                    v-model="formData.name"
+                    v-model="formData.subject"
                     required
-                    id="name"
+                    id="subject"
                     class="peer w-full bg-transparent px-5 pt-7 pb-2 text-white placeholder-transparent focus:outline-none custom-input"
-                    :placeholder="$t('contact.form.name_label')"
+                    :placeholder="$t('contact.form.subject_label')"
                   />
                   <label
-                    for="name"
+                    for="subject"
                     class="absolute left-5 top-4 text-[10px] font-mono text-slate-400 uppercase tracking-widest transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-xs peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-neon-cyan pointer-events-none"
                   >
-                    {{ $t("contact.form.name_label") }}
+                    {{ $t("contact.form.subject_label") }}
                   </label>
                 </div>
+              </div>
 
+              <div class="form-item-anim opacity-0 hw-accel w-full">
                 <div
                   class="relative bg-slate-950/50 rounded-xl border border-slate-700/50 overflow-hidden focus-within:border-neon-cyan focus-within:ring-1 focus-within:ring-neon-cyan transition-all duration-300"
                 >
-                  <input
-                    type="email"
-                    v-model="formData.email"
+                  <textarea
+                    v-model="formData.message"
+                    rows="4"
                     required
-                    id="email"
-                    class="peer w-full bg-transparent px-5 pt-7 pb-2 text-white placeholder-transparent focus:outline-none custom-input"
-                    :placeholder="$t('contact.form.email_label')"
-                  />
+                    id="message"
+                    class="peer w-full bg-transparent px-5 pt-7 pb-3 text-white resize-none placeholder-transparent focus:outline-none custom-input"
+                    :placeholder="$t('contact.form.message_label')"
+                  ></textarea>
                   <label
-                    for="email"
+                    for="message"
                     class="absolute left-5 top-4 text-[10px] font-mono text-slate-400 uppercase tracking-widest transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-xs peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-neon-cyan pointer-events-none"
                   >
-                    {{ $t("contact.form.email_label") }}
+                    {{ $t("contact.form.message_label") }}
                   </label>
                 </div>
-              </div>
-
-              <div
-                class="relative bg-slate-950/50 rounded-xl border border-slate-700/50 overflow-hidden focus-within:border-neon-cyan focus-within:ring-1 focus-within:ring-neon-cyan transition-all duration-300"
-              >
-                <input
-                  type="text"
-                  v-model="formData.subject"
-                  required
-                  id="subject"
-                  class="peer w-full bg-transparent px-5 pt-7 pb-2 text-white placeholder-transparent focus:outline-none custom-input"
-                  :placeholder="$t('contact.form.subject_label')"
-                />
-                <label
-                  for="subject"
-                  class="absolute left-5 top-4 text-[10px] font-mono text-slate-400 uppercase tracking-widest transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-xs peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-neon-cyan pointer-events-none"
-                >
-                  {{ $t("contact.form.subject_label") }}
-                </label>
-              </div>
-
-              <div
-                class="relative bg-slate-950/50 rounded-xl border border-slate-700/50 overflow-hidden focus-within:border-neon-cyan focus-within:ring-1 focus-within:ring-neon-cyan transition-all duration-300"
-              >
-                <textarea
-                  v-model="formData.message"
-                  rows="4"
-                  required
-                  id="message"
-                  class="peer w-full bg-transparent px-5 pt-7 pb-3 text-white resize-none placeholder-transparent focus:outline-none custom-input"
-                  :placeholder="$t('contact.form.message_label')"
-                ></textarea>
-                <label
-                  for="message"
-                  class="absolute left-5 top-4 text-[10px] font-mono text-slate-400 uppercase tracking-widest transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-xs peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-neon-cyan pointer-events-none"
-                >
-                  {{ $t("contact.form.message_label") }}
-                </label>
               </div>
 
               <transition name="fade">
@@ -139,7 +149,7 @@
                 </div>
               </transition>
 
-              <div class="pt-2">
+              <div class="form-item-anim opacity-0 hw-accel pt-2">
                 <button
                   type="submit"
                   :disabled="isSubmitting"
@@ -167,16 +177,19 @@
         </div>
 
         <div
-          class="contact-right opacity-0 relative flex flex-col justify-center items-center lg:items-start mt-12 lg:mt-0 w-full"
+          class="relative flex flex-col justify-center items-center lg:items-start mt-12 lg:mt-0 w-full"
         >
           <div
             ref="mapContainer"
             :class="[
-              'w-full relative flex justify-center lg:justify-start mb-12',
+              'contact-right-map opacity-0 hw-accel w-full relative flex justify-center lg:justify-start mb-12',
               { 'map-is-visible': isMapVisible },
             ]"
           >
-            <svg viewBox="0 0 840 400" class="w-full max-w-[650px] h-auto">
+            <svg
+              viewBox="0 0 840 400"
+              class="w-full max-w-[650px] h-auto drop-shadow-lg"
+            >
               <circle
                 v-for="(dot, index) in mapDots"
                 :key="index"
@@ -193,74 +206,96 @@
 
           <div class="text-center lg:text-left w-full">
             <h3
-              class="text-2xl md:text-3xl font-bold text-white mb-2 flex items-center justify-center lg:justify-start gap-3"
+              class="contact-right-anim opacity-0 hw-accel text-2xl md:text-3xl font-bold text-white mb-2 flex items-center justify-center lg:justify-start gap-3"
             >
               <Icon name="uil:map-marker-alt" class="text-neon-cyan" />
               {{ $t("contact.info.title") }}
             </h3>
+
             <p
-              class="text-slate-400 text-base md:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 mt-4"
+              class="contact-right-anim opacity-0 hw-accel text-slate-400 text-base md:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 mt-4"
             >
               {{ $t("contact.info.desc") }}
             </p>
 
             <div class="mt-10">
               <p
-                class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-4"
+                class="contact-right-anim opacity-0 hw-accel text-xs font-mono text-slate-500 uppercase tracking-widest mb-4"
               >
                 {{ $t("contact.info.socials") }}
               </p>
+
               <div
                 class="flex flex-wrap items-center justify-center lg:justify-start gap-4"
               >
-                <a
-                  href="https://github.com/AdnNyx/"
-                  target="_blank"
-                  aria-label="GitHub"
-                  class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-white hover:text-black hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(255,255,255,0.1)] transition-all duration-300"
-                  ><Icon name="uil:github" class="text-2xl"
-                /></a>
-                <a
-                  href="https://www.linkedin.com/in/adnnyx"
-                  target="_blank"
-                  aria-label="LinkedIn"
-                  class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(10,102,194,0.2)] transition-all duration-300"
-                  ><Icon name="uil:linkedin" class="text-2xl"
-                /></a>
-                <a
-                  href="mailto:mahfudinadnan@gmail.com"
-                  aria-label="Email"
-                  class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-neon-cyan hover:border-neon-cyan hover:text-space-900 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(34,211,238,0.2)] transition-all duration-300"
-                  ><Icon name="uil:envelope" class="text-2xl"
-                /></a>
-                <a
-                  href="https://www.instagram.com/adn_nyx"
-                  target="_blank"
-                  aria-label="Instagram"
-                  class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:border-transparent hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(188,24,136,0.2)] transition-all duration-300"
-                  ><Icon name="uil:instagram" class="text-2xl"
-                /></a>
-                <a
-                  href="https://www.tiktok.com/@adnnyx"
-                  target="_blank"
-                  aria-label="TikTok"
-                  class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-black hover:border-neon-cyan hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(34,211,238,0.2)] transition-all duration-300"
-                  ><Icon name="fa6-brands:tiktok" class="text-[20px]"
-                /></a>
-                <a
-                  href="https://www.youtube.com/@VollereiCh"
-                  target="_blank"
-                  aria-label="YouTube"
-                  class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(255,0,0,0.2)] transition-all duration-300"
-                  ><Icon name="uil:youtube" class="text-2xl"
-                /></a>
-                <a
-                  href="https://www.facebook.com/naze.naze.3958914"
-                  target="_blank"
-                  aria-label="Facebook"
-                  class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(24,119,242,0.2)] transition-all duration-300"
-                  ><Icon name="uil:facebook-f" class="text-2xl"
-                /></a>
+                <div class="contact-right-anim opacity-0 hw-accel">
+                  <a
+                    href="https://github.com/AdnNyx/"
+                    target="_blank"
+                    aria-label="GitHub"
+                    class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-white hover:text-black hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(255,255,255,0.1)] transition-all duration-300"
+                    ><Icon name="uil:github" class="text-2xl"
+                  /></a>
+                </div>
+
+                <div class="contact-right-anim opacity-0 hw-accel">
+                  <a
+                    href="https://www.linkedin.com/in/adnnyx"
+                    target="_blank"
+                    aria-label="LinkedIn"
+                    class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(10,102,194,0.2)] transition-all duration-300"
+                    ><Icon name="uil:linkedin" class="text-2xl"
+                  /></a>
+                </div>
+
+                <div class="contact-right-anim opacity-0 hw-accel">
+                  <a
+                    href="mailto:mahfudinadnan@gmail.com"
+                    aria-label="Email"
+                    class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-neon-cyan hover:border-neon-cyan hover:text-space-900 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(34,211,238,0.2)] transition-all duration-300"
+                    ><Icon name="uil:envelope" class="text-2xl"
+                  /></a>
+                </div>
+
+                <div class="contact-right-anim opacity-0 hw-accel">
+                  <a
+                    href="https://www.instagram.com/adn_nyx"
+                    target="_blank"
+                    aria-label="Instagram"
+                    class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:border-transparent hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(188,24,136,0.2)] transition-all duration-300"
+                    ><Icon name="uil:instagram" class="text-2xl"
+                  /></a>
+                </div>
+
+                <div class="contact-right-anim opacity-0 hw-accel">
+                  <a
+                    href="https://www.tiktok.com/@adnnyx"
+                    target="_blank"
+                    aria-label="TikTok"
+                    class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-black hover:border-neon-cyan hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(34,211,238,0.2)] transition-all duration-300"
+                    ><Icon name="fa6-brands:tiktok" class="text-[20px]"
+                  /></a>
+                </div>
+
+                <div class="contact-right-anim opacity-0 hw-accel">
+                  <a
+                    href="https://www.youtube.com/@VollereiCh"
+                    target="_blank"
+                    aria-label="YouTube"
+                    class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(255,0,0,0.2)] transition-all duration-300"
+                    ><Icon name="uil:youtube" class="text-2xl"
+                  /></a>
+                </div>
+
+                <div class="contact-right-anim opacity-0 hw-accel">
+                  <a
+                    href="https://www.facebook.com/naze.naze.3958914"
+                    target="_blank"
+                    aria-label="Facebook"
+                    class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(24,119,242,0.2)] transition-all duration-300"
+                    ><Icon name="uil:facebook-f" class="text-2xl"
+                  /></a>
+                </div>
               </div>
             </div>
           </div>
@@ -271,26 +306,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted, onUnmounted } from "vue";
+import { ref, reactive, computed, onMounted, onUnmounted, nextTick } from "vue";
 import { useI18n } from "vue-i18n";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useAnimations } from "~/composables/useAnimations";
 
-// Language
 const { t } = useI18n();
+const { animateSlide, cleanupAnimations } = useAnimations();
 
-// Observer
+// Peta SVG Observer
 const mapContainer = ref<HTMLElement | null>(null);
 const isMapVisible = ref(false);
+let observer: IntersectionObserver | null = null;
 
 onMounted(() => {
   if (import.meta.client) {
-    const observer = new IntersectionObserver(
+    observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             isMapVisible.value = true;
-            observer.disconnect();
+            if (observer) observer.disconnect();
           }
         });
       },
@@ -300,51 +335,27 @@ onMounted(() => {
     if (mapContainer.value) {
       observer.observe(mapContainer.value);
     }
-  }
-});
 
-// GSAP
-onMounted(() => {
-  if (import.meta.client) {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#contact",
-        start: "top 80%",
-        once: true,
-      },
+    nextTick(() => {
+      requestAnimationFrame(() => {
+        animateSlide(".contact-anim", 0, 100, 0.1, 0.2, "#contact");
+        animateSlide(".contact-left", 0, 100, 0.3, 0.1, "#contact");
+        animateSlide(".form-item-anim", 0, 100, 0.4, 0.2, "#contact");
+        animateSlide(".contact-right-map", 0, 100, 0.5, 0, "#contact");
+        animateSlide(".contact-right-anim", 0, 50, 0.6, 0.1, "#contact");
+      });
     });
-
-    tl.fromTo(
-      ".contact-anim",
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.2, stagger: 0.2, ease: "power3.out" },
-    );
-
-    tl.fromTo(
-      ".contact-left",
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.5, ease: "power3.out" },
-      "-=0.8",
-    );
-
-    tl.fromTo(
-      ".contact-right",
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.5, ease: "power3.out" },
-      "<0.2",
-    );
   }
 });
 
 onUnmounted(() => {
   if (import.meta.client) {
-    ScrollTrigger.getAll().forEach((t) => t.kill());
+    if (observer) observer.disconnect();
+    cleanupAnimations();
   }
 });
 
-// Map
+// Konfigurasi Grid Peta
 const mapGrid = [
   "000000000000000000000000000000000000000000000000001111000000000000000",
   "0000000000000000000000000000000000000000000000000111111110000000000000",
@@ -420,8 +431,8 @@ const getDotClass = (type: string) => {
   return "";
 };
 
-// Form
-const WEB3FORMS_ACCESS_KEY = "YOUR_KEY_HERE";
+// Pengaturan Web3Forms
+const WEB3FORMS_ACCESS_KEY = "997f4b75-1f41-45a0-a64c-2f09f5197cee";
 const formData = reactive({ name: "", email: "", subject: "", message: "" });
 const isSubmitting = ref(false);
 const statusMessage = ref("");
@@ -437,7 +448,7 @@ const submitForm = async () => {
       body: JSON.stringify({
         access_key: WEB3FORMS_ACCESS_KEY,
         ...formData,
-        from_name: "Portfolio Uplink",
+        from_name: "Portfolio Notification",
       }),
     });
     if (response.ok) {
@@ -465,6 +476,11 @@ const submitForm = async () => {
 </script>
 
 <style scoped>
+.hw-accel {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
 .dot-land {
   fill: #22d3ee;
 }
@@ -497,23 +513,12 @@ const submitForm = async () => {
   border-bottom-color: transparent !important;
 }
 
+/* Fix CSS autofill yang terpotong */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus {
-  -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+  -webkit-text-fill-color: #fff !important;
 }
 </style>

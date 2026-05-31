@@ -91,52 +91,26 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted } from "vue";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { onMounted, onUnmounted, nextTick } from "vue";
+import { useAnimations } from "~/composables/useAnimations";
+
+const { animateSlide, animateTextScrub, cleanupAnimations } = useAnimations();
 
 onMounted(() => {
   if (import.meta.client) {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const tlEntrance = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top 75%",
-      },
-    });
-
-    tlEntrance.fromTo(
-      ".about-photo",
-      { x: -40, opacity: 0 },
-      { x: 0, opacity: 1, duration: 1, ease: "power2.out" },
-    );
-
-    tlEntrance.fromTo(
-      ".about-anim",
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power2.out" },
-      "-=0.6",
-    );
-
-    gsap.to(".about-word", {
-      color: "#f8fafc",
-      stagger: 0.1,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#about-text-container",
-        start: "top 80%",
-        end: "bottom 70%",
-
-        scrub: 0.5,
-      },
+    nextTick(() => {
+      requestAnimationFrame(() => {
+        animateSlide(".about-photo", -100, 0, 0, 0.2, "#about");
+        animateSlide(".about-anim", 0, 100, 0.2, 0.3, "#about");
+        animateTextScrub("#about-text-container", ".about-word", "#f8fafc");
+      });
     });
   }
 });
 
 onUnmounted(() => {
   if (import.meta.client) {
-    ScrollTrigger.getAll().forEach((t) => t.kill());
+    cleanupAnimations();
   }
 });
 </script>
@@ -153,6 +127,16 @@ onUnmounted(() => {
 
 .ring-spin-reverse {
   animation: spin-reverse 10s linear infinite;
+}
+
+.about-photo,
+.about-anim {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+.about-word {
+  will-change: color;
 }
 
 @keyframes spin-slow {
