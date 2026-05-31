@@ -7,7 +7,7 @@
 Modern portfolio website built with Vue 3, Tailwind CSS, Lenis smooth scrolling, and cinematic animations inspired by futuristic space-tech interfaces.
 
 🌐 Live Demo  
-https://nandev-kappa.vercel.app/
+https://nandev.my.id
 
 📦 Repository  
 https://github.com/AdnNyx/portfolio
@@ -37,10 +37,7 @@ This project focuses on:
 # 🌌 Features
 
 ## 🎨 Modern UI/UX
-<<<<<<< HEAD
-=======
 
->>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Futuristic space-inspired design
 - Glassmorphism interface
 - Dynamic gradients
@@ -49,10 +46,7 @@ This project focuses on:
 - Interactive visual elements
 
 ## ⚡ Advanced Animations
-<<<<<<< HEAD
-=======
 
->>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Lenis smooth scrolling
 - GSAP animation system
 - Scroll-triggered transitions
@@ -62,10 +56,7 @@ This project focuses on:
 - Layered reveal animations
 
 ## 🧠 User Experience
-<<<<<<< HEAD
-=======
 
->>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Responsive across all devices
 - Smooth navigation flow
 - Optimized interaction feedback
@@ -76,39 +67,26 @@ This project focuses on:
 
 # 🛠️ Tech Stack
 
-## Frontend
-<<<<<<< HEAD
-=======
 
->>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Vue 3
 - Vite
 - TypeScript
 - Vue Router
 
 ## Styling
-<<<<<<< HEAD
-=======
 
->>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Tailwind CSS
 - CSS Variables
 - Responsive Design System
 
 ## Animation
-<<<<<<< HEAD
-=======
 
->>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Lenis
 - GSAP
 - ScrollTrigger
 
 ## Deployment
-<<<<<<< HEAD
-=======
 
->>>>>>> d5684cd (feat(frontend): improve UI interactions)
 - Vercel
 
 ---
@@ -135,9 +113,6 @@ portfolio/
 └── README.md
 <<<<<<< HEAD
 ````
-=======
-```
->>>>>>> d5684cd (feat(frontend): improve UI interactions)
 
 ---
 
@@ -189,7 +164,6 @@ npm run preview
 
 This project is designed around:
 
-<<<<<<< HEAD
 * Futuristic aesthetics
 * Smooth cinematic motion
 * Space-tech atmosphere
@@ -215,7 +189,6 @@ The interface combines:
 - Motion storytelling
 - Premium interaction design
 - Elegant visual hierarchy
->>>>>>> d5684cd (feat(frontend): improve UI interactions)
 
 ---
 
@@ -223,7 +196,6 @@ The interface combines:
 
 Implemented optimizations include:
 
-<<<<<<< HEAD
 * Lazy loading
 * Optimized rendering
 * GPU-friendly animations
@@ -247,7 +219,6 @@ Implemented optimizations include:
 
 Fully optimized for:
 
-<<<<<<< HEAD
 * Desktop
 * Tablet
 * Mobile devices
@@ -257,7 +228,6 @@ Fully optimized for:
 - Tablet
 - Mobile devices
 - Modern browsers
->>>>>>> d5684cd (feat(frontend): improve UI interactions)
 
 ---
 
@@ -265,7 +235,6 @@ Fully optimized for:
 
 Planned improvements:
 
-<<<<<<< HEAD
 * Interactive 3D scenes
 * Particle systems
 * Advanced shader effects
@@ -281,7 +250,6 @@ Planned improvements:
 - Blog system
 - Multi-language support
 - Enhanced micro-interactions
->>>>>>> d5684cd (feat(frontend): improve UI interactions)
 
 ---
 
@@ -307,7 +275,7 @@ GitHub
 [https://github.com/AdnNyx](https://github.com/AdnNyx)
 
 Portfolio
-[https://nandev-kappa.vercel.app/](https://nandev-kappa.vercel.app/)
+[https://nandev.my.id](https://nandev.my.id)
 
 ---
 
