@@ -163,6 +163,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, nextTick } from "vue";
 // import { useRoute } from "vue-router";
+import { useRoute } from "#imports";
 import { useAnimations } from "~/composables/useAnimations";
 
 const { t } = useI18n();
