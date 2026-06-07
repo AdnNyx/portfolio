@@ -50,7 +50,14 @@ export default defineNuxtConfig({
 
   vite: {
     optimizeDeps: {
-      include: ["three"],
+      include: [
+        "three",
+        "@vue/devtools-core",
+        "@vue/devtools-kit",
+        "lenis",
+        "gsap",
+        "gsap/ScrollTrigger",
+      ],
     },
   },
 });

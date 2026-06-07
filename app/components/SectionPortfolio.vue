@@ -51,26 +51,24 @@
         </div>
       </div>
 
-      <div
-        class="port-anim opacity-0 w-full hw-accel relative grid grid-cols-1 items-start"
-      >
+      <div class="port-anim opacity-0 w-full hw-accel relative">
         <div
-          class="col-start-1 row-start-1 w-full transition-all duration-700 ease-in-out"
+          class="w-full transition-all duration-700 ease-in-out"
           :class="
             activeTab === 'projects'
-              ? 'opacity-100 z-10 translate-y-0'
-              : 'opacity-0 z-0 pointer-events-none -translate-y-8'
+              ? 'relative opacity-100 z-10 translate-y-0'
+              : 'absolute top-0 left-0 opacity-0 z-0 pointer-events-none -translate-y-8'
           "
         >
           <PortfolioProjects />
         </div>
 
         <div
-          class="col-start-1 row-start-1 w-full transition-all duration-700 ease-in-out"
+          class="w-full transition-all duration-700 ease-in-out"
           :class="
             activeTab === 'skills'
-              ? 'opacity-100 z-10 translate-y-0'
-              : 'opacity-0 z-0 pointer-events-none translate-y-8'
+              ? 'relative opacity-100 z-10 translate-y-0'
+              : 'absolute top-0 left-0 opacity-0 z-0 pointer-events-none translate-y-8'
           "
         >
           <PortfolioSkills />
@@ -82,10 +80,10 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
-import { useAnimations } from "~/composables/useAnimations";
+import { useCustomAnimations } from "~/composables/useCustomAnimations";
 
 const activeTab = ref<"projects" | "skills">("projects");
-const { animateSlide, cleanupAnimations } = useAnimations();
+const { animateSlide, cleanupAnimations } = useCustomAnimations();
 
 onMounted(() => {
   if (import.meta.client) {

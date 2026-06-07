@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export const useAnimations = () => {
+export const useCustomAnimations = () => {
   let ctx: gsap.Context;
 
   const initContext = () => {

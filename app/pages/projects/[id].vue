@@ -162,12 +162,11 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, nextTick } from "vue";
-// import { useRoute } from "vue-router";
-import { useRoute } from "#imports";
-import { useAnimations } from "~/composables/useAnimations";
+import { useCustomAnimations } from "~/composables/useCustomAnimations";
 
 const { t } = useI18n();
-const { animateSlide, cleanupAnimations } = useAnimations();
+const { animateSlide, cleanupAnimations } = useCustomAnimations();
+
 const route = useRoute();
 const projectId = route.params.id as string;
 

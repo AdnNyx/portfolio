@@ -308,10 +308,10 @@
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted, onUnmounted, nextTick } from "vue";
 import { useI18n } from "vue-i18n";
-import { useAnimations } from "~/composables/useAnimations";
+import { useCustomAnimations } from "~/composables/useCustomAnimations";
 
 const { t } = useI18n();
-const { animateSlide, cleanupAnimations } = useAnimations();
+const { animateSlide, cleanupAnimations } = useCustomAnimations();
 
 // Peta SVG Observer
 const mapContainer = ref<HTMLElement | null>(null);

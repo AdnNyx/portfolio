@@ -15,7 +15,7 @@
             )
           "
           @mouseleave="stopHoverSlideshow"
-          class="relative h-full bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex flex-col group hover:-translate-y-2 hover:border-neon-cyan/50 hover:shadow-[0_10px_40px_rgba(34,211,238,0.15)] transition-all duration-500 overflow-hidden"
+          class="relative h-full bg-slate-900/60 backdrop-blur-md border border-white/10 rounded-3xl p-6 flex flex-col group hover:-translate-y-2 hover:border-neon-cyan/50 hover:shadow-[0_10px_40px_rgba(34,211,238,0.15)] transition-[transform,border-color,box-shadow] duration-500 overflow-hidden hw-accel-card"
         >
           <div
             class="w-full aspect-[2/1] bg-space-800 rounded-2xl mb-6 border border-white/5 overflow-hidden relative group-hover:border-white/10 transition-colors"
@@ -39,7 +39,9 @@
                       )
                     "
                     :alt="$t(project.titleKey)"
-                    class="absolute inset-0 w-full h-full object-cover object-center"
+                    loading="lazy"
+                    decoding="async"
+                    class="absolute inset-0 w-full h-full object-cover object-center hw-accel-img"
                   />
                 </transition>
               </div>
@@ -53,7 +55,7 @@
             </div>
 
             <div
-              class="absolute inset-0 bg-neon-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay pointer-events-none"
+              class="absolute inset-0 bg-gradient-to-t from-neon-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none hw-accel"
             ></div>
           </div>
 
@@ -126,9 +128,9 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, nextTick, onUnmounted } from "vue";
-import { useAnimations } from "~/composables/useAnimations";
+import { useCustomAnimations } from "~/composables/useCustomAnimations";
 
-const { animateSlide, cleanupAnimations } = useAnimations();
+const { animateSlide, cleanupAnimations } = useCustomAnimations();
 
 interface Project {
   titleKey: string;
@@ -264,15 +266,13 @@ const loadMore = () => {
   });
 };
 
-// Fungsi baru untuk Show Less
 const showLess = () => {
-  visibleCount.value = 4; // Kembalikan ke 4 kartu awal
+  visibleCount.value = 4;
 
-  // Menggulirkan layar kembali ke atas grid proyek agar pengguna tidak kebingungan
   nextTick(() => {
     const gridEl = document.getElementById("projects-grid");
     if (gridEl) {
-      const y = gridEl.getBoundingClientRect().top + window.scrollY - 120; // 120px offset untuk Header/Navbar
+      const y = gridEl.getBoundingClientRect().top + window.scrollY - 120;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   });
@@ -335,8 +335,21 @@ const getImageUrl = (imageName: string | undefined) => {
   opacity: 0;
 }
 
+/* Optimasi Hardware Acceleration untuk GPU */
 .hw-accel {
   will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.hw-accel-card {
+  will-change: transform, border-color, box-shadow;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.hw-accel-img {
+  will-change: transform;
   transform: translateZ(0);
 }
 </style>

@@ -60,9 +60,9 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, nextTick } from "vue";
-import { useAnimations } from "~/composables/useAnimations";
+import { useCustomAnimations } from "~/composables/useCustomAnimations";
 
-const { animateSlide, cleanupAnimations } = useAnimations();
+const { animateSlide, cleanupAnimations } = useCustomAnimations();
 
 const categorizedSkills = [
   {

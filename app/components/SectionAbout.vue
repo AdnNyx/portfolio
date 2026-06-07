@@ -92,9 +92,10 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, nextTick } from "vue";
-import { useAnimations } from "~/composables/useAnimations";
+import { useCustomAnimations } from "~/composables/useCustomAnimations";
 
-const { animateSlide, animateTextScrub, cleanupAnimations } = useAnimations();
+const { animateSlide, animateTextScrub, cleanupAnimations } =
+  useCustomAnimations();
 
 onMounted(() => {
   if (import.meta.client) {

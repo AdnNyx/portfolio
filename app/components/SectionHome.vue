@@ -189,9 +189,10 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { useAnimations } from "~/composables/useAnimations";
+import { useCustomAnimations } from "~/composables/useCustomAnimations";
 
-const { animateSlide, animateBlurReveal, cleanupAnimations } = useAnimations();
+const { animateSlide, animateBlurReveal, cleanupAnimations } =
+  useCustomAnimations();
 
 const roles = [
   "Software Engineer",
