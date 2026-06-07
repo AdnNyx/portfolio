@@ -165,6 +165,7 @@ import { computed, onMounted, onUnmounted, nextTick } from "vue";
 import { useRoute } from "vue-router";
 import { useAnimations } from "~/composables/useAnimations";
 
+const { t } = useI18n();
 const { animateSlide, cleanupAnimations } = useAnimations();
 const route = useRoute();
 const projectId = route.params.id as string;
@@ -253,6 +254,28 @@ const getImageUrl = (name: string | undefined) => {
   }
   return "";
 };
+
+// SEO
+if (project.value) {
+  const projectImageUrl =
+    project.value.images.length > 0
+      ? getImageUrl(project.value.images[0])
+      : "https://nandev.my.id/preview.jpg";
+
+  useSeoMeta({
+    title: t(project.value.titleKey),
+    description: t(project.value.descKey),
+
+    ogTitle: `${t(project.value.titleKey)} | Mahfudin Adnan`,
+    ogDescription: t(project.value.descKey),
+    ogImage: projectImageUrl,
+    ogUrl: `https://nandev.my.id/projects/${projectId}`,
+
+    twitterTitle: `${t(project.value.titleKey)} | Mahfudin Adnan`,
+    twitterDescription: t(project.value.descKey),
+    twitterImage: projectImageUrl,
+  });
+}
 
 onMounted(() => {
   if (import.meta.client && project.value) {

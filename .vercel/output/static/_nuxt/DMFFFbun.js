@@ -1,0 +1,1 @@
+import{l as o,e as s,f as r,p as t}from"./DPbs9KqY.js";const n={};function a(e,c){return s(),r("tbody",null,[t(e.$slots,"default")])}const _=Object.assign(o(n,[["render",a]]),{__name:"ProseTbody"});export{_ as default};

@@ -1,2 +1,6 @@
-User-Agent: *
-Disallow:
+# Mengizinkan semua robot mesin pencari (Google, Bing, DuckDuckGo, dll)
+User-agent: *
+Allow: /
+
+# Beritahu lokasi peta situs (sitemap) website Anda
+Sitemap: https://nandev.my.id/sitemap.xml
