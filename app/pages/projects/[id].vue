@@ -260,7 +260,7 @@ if (project.value) {
   const projectImageUrl =
     project.value.images.length > 0
       ? getImageUrl(project.value.images[0])
-      : "https://nandev.my.id/preview.jpg";
+      : "https://nandev.my.id/preview.webp";
 
   useSeoMeta({
     title: t(project.value.titleKey),
