@@ -32,7 +32,7 @@
           ></div>
 
           <NuxtImg
-            src="~/assets/image/profile.webp"
+            src="/image/profile.webp"
             alt="Mahfudin Adnan"
             width="480"
             height="480"
