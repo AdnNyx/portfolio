@@ -31,9 +31,14 @@
             class="absolute inset-0 bg-gradient-to-t from-space-900/90 via-transparent to-transparent z-10 pointer-events-none"
           ></div>
 
-          <img
+          <NuxtImg
             src="~/assets/image/profile.webp"
             alt="Mahfudin Adnan"
+            width="480"
+            height="480"
+            sizes="sm:250px md:400px lg:480px"
+            preload
+            fetchpriority="high"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hw-accel"
           />
         </div>

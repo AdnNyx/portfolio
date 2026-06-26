@@ -98,10 +98,16 @@
           <div
             class="detail-anim opacity-0 w-full aspect-video md:aspect-[4/3] lg:aspect-auto lg:h-[420px] rounded-3xl overflow-hidden border border-white/10 bg-slate-900 shadow-2xl relative"
           >
-            <img
+            <NuxtImg
               v-if="project.images.length > 0"
               :src="getImageUrl(project.images[0])"
-              class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+              :alt="$t(project.titleKey)"
+              format="webp"
+              quality="90"
+              sizes="sm:100vw md:50vw lg:600px"
+              loading="eager"
+              fetchpriority="high"
+              class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 hw-accel-img"
             />
             <div
               v-else
@@ -161,13 +167,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, nextTick } from "vue";
+import { computed, onMounted, onUnmounted, nextTick, watch } from "vue";
 import { useCustomAnimations } from "~/composables/useCustomAnimations";
 
 const { t } = useI18n();
 const { animateSlide, cleanupAnimations } = useCustomAnimations();
-
 const route = useRoute();
+
 const projectId = route.params.id as string;
 
 const projects = [
@@ -255,27 +261,33 @@ const getImageUrl = (name: string | undefined) => {
   return "";
 };
 
-// SEO
-if (project.value) {
-  const projectImageUrl =
-    project.value.images.length > 0
-      ? getImageUrl(project.value.images[0])
-      : "https://nandev.my.id/preview.webp";
+// ==========================================
+// FIX SEO: Menjamin injeksi Meta Tag ke Head
+// ==========================================
+watch(
+  project,
+  (newProject) => {
+    if (newProject) {
+      const projectImageUrl =
+        newProject.images.length > 0
+          ? getImageUrl(newProject.images[0])
+          : "https://www.nandev.my.id/preview.webp";
 
-  useSeoMeta({
-    title: t(project.value.titleKey),
-    description: t(project.value.descKey),
-
-    ogTitle: `${t(project.value.titleKey)} | Mahfudin Adnan`,
-    ogDescription: t(project.value.descKey),
-    ogImage: projectImageUrl,
-    ogUrl: `https://nandev.my.id/projects/${projectId}`,
-
-    twitterTitle: `${t(project.value.titleKey)} | Mahfudin Adnan`,
-    twitterDescription: t(project.value.descKey),
-    twitterImage: projectImageUrl,
-  });
-}
+      useSeoMeta({
+        title: t(newProject.titleKey),
+        description: t(newProject.descKey),
+        ogTitle: `${t(newProject.titleKey)} | Mahfudin Adnan`,
+        ogDescription: t(newProject.descKey),
+        ogImage: projectImageUrl,
+        ogUrl: `https://www.nandev.my.id/projects/${projectId}`,
+        twitterTitle: `${t(newProject.titleKey)} | Mahfudin Adnan`,
+        twitterDescription: t(newProject.descKey),
+        twitterImage: projectImageUrl,
+      });
+    }
+  },
+  { immediate: true }, // Menjalankan watch langsung saat komponen diinisialisasi
+);
 
 onMounted(() => {
   if (import.meta.client && project.value) {
@@ -295,6 +307,10 @@ onUnmounted(() => {
 <style scoped>
 .hw-accel {
   will-change: transform, opacity;
+  transform: translateZ(0);
+}
+.hw-accel-img {
+  will-change: transform;
   transform: translateZ(0);
 }
 </style>

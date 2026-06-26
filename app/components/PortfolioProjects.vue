@@ -25,7 +25,7 @@
                 class="absolute inset-0 transition-transform duration-[2000ms] ease-out group-hover:scale-105"
               >
                 <transition name="carousel-fade">
-                  <img
+                  <NuxtImg
                     :key="
                       activeHoverKey === project.titleKey ? activeHoverIndex : 0
                     "
@@ -39,6 +39,9 @@
                       )
                     "
                     :alt="$t(project.titleKey)"
+                    format="webp"
+                    quality="80"
+                    sizes="sm:100vw md:50vw lg:500px"
                     loading="lazy"
                     decoding="async"
                     class="absolute inset-0 w-full h-full object-cover object-center hw-accel-img"

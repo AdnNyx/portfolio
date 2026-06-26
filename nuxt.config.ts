@@ -5,12 +5,11 @@ export default defineNuxtConfig({
   // Pengaturan dasar aplikasi
   app: {
     head: {
-      // Hilangkan meta SEO statis dari sini, karena kita akan menggunakan useSeoMeta agar bisa multibahasa
       titleTemplate: "%s | Mahfudin Adnan",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "theme-color", content: "#22d3ee" }, // Warna utama untuk mobile browser (Neon Cyan)
+        { name: "theme-color", content: "#22d3ee" },
       ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
@@ -23,16 +22,25 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@tresjs/nuxt",
     "@nuxtjs/i18n",
+    "@nuxt/image",
   ],
+
+  features: {
+    inlineStyles: true,
+  },
+
+  image: {
+    format: ["webp"],
+    quality: 80,
+  },
 
   i18n: {
     locales: [
-      { code: "id", name: "ID", file: "id.json", language: "id-ID" }, // Tambahkan language untuk keperluan SEO hrefLang
+      { code: "id", name: "ID", file: "id.json", language: "id-ID" },
       { code: "en", name: "EN", file: "en.json", language: "en-US" },
     ],
     defaultLocale: "id",
     strategy: "no_prefix",
-    // Base URL sangat penting untuk Canonical dan hreflang
     baseUrl: "https://nandev.my.id",
   },
 

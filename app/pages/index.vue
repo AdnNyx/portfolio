@@ -1,10 +1,11 @@
 <template>
   <div>
     <SectionHome />
-    <SectionAbout />
-    <SectionServices />
-    <SectionPortfolio />
-    <SectionContact />
+
+    <LazySectionAbout />
+    <LazySectionServices />
+    <LazySectionPortfolio />
+    <LazySectionContact />
   </div>
 </template>
 
