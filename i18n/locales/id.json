@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "services": "Layanan",
+    "portfolio": "Portofolio",
+    "contact": "Kontak"
+  },
+  "footer": {
+    "copyright": "© 2026 Mahfudin Adnan. Hak cipta dilindungi undang-undang.",
+    "terms": "Syarat & Ketentuan",
+    "privacy": "Kebijakan Privasi"
+  },
+  "home": {
+    "greeting": "Halo, Saya",
+    "role_prefix": "Dan saya seorang",
+    "description": "Saya adalah seorang pengembang perangkat lunak yang antusias dalam membangun aplikasi web modern, fungsional, dan ramah pengguna.",
+    "more_about": "Lebih Banyak Tentang Saya",
+    "download_cv": "Unduh CV"
+  },
+  "about": {
+    "title_1": "Tentang",
+    "title_2": "Saya",
+    "p1": "Halo! Saya adalah Mahfudin Adnan, seorang Software Engineer yang berfokus pada pengembangan ekosistem digital yang modern dan intuitif. Bagi saya, 'coding' bukan sekadar menulis baris perintah, melainkan seni merancang solusi nyata yang memudahkan penggunanya.",
+    "p2": "Dengan pengalaman dalam merancang antarmuka untuk aplikasi berskala institusi, hingga merakit integrasi 'AI Chatbot', saya selalu antusias menghadapi tantangan teknis yang baru. Saya percaya bahwa perpaduan antara visual yang indah dan arsitektur sistem yang tangguh adalah kunci dari produk digital yang sukses.",
+    "cta": "Lihat Keahlian Saya"
+  },
+  "services": {
+    "title_1": "Keahlian &",
+    "title_2": "Layanan",
+    "dev_title": "Pengembangan Web & Mobile",
+    "dev_desc": "Merancang arsitektur aplikasi fullstack yang tangguh dan antarmuka lintas platform yang responsif menggunakan Vue.js, Flutter, FastAPI, dan Golang.",
+    "ai_title": "AI & Solusi Cerdas",
+    "ai_desc": "Mengintegrasikan kecerdasan buatan dan Large Language Models (LLM) untuk menciptakan ekosistem Chatbot yang cerdas dan otomatisasi pintar.",
+    "blockchain_title": "Integrasi Web3 & Blockchain",
+    "blockchain_desc": "Mengeksplorasi teknologi desentralisasi, mengembangkan fondasi smart contract, serta mengintegrasikan kapabilitas Web3 ke dalam aplikasi modern."
+  },
+  "portfolio": {
+    "title_port_1": "Karya",
+    "title_port_2": "Unggulan",
+    "project1_title": "Profil Perusahaan Satyavrata",
+    "project1_desc": "Website profil perusahaan ekspor yang menampilkan produk berkualitas dari Indonesia untuk pasar Timur Tengah dan Asia, menekankan rantai pasok yang konsisten dan berkelanjutan.",
+    "project2_title": "Platform Membaca Novel",
+    "project2_desc": "Ekosistem membaca yang dibangun dengan Next.js dan didukung oleh infrastruktur backend Python dan PostgreSQL yang tangguh, memberikan pengalaman yang mulus bagi para penggemar novel.",
+    "project3_title": "EduPortal MI Al-Hidayah",
+    "project3_desc": "Sistem informasi sekolah resmi yang dilengkapi modul administrasi yang aman, proteksi rute modern, dan portal publik untuk manajemen pendidikan yang efisien.",
+    "project4_title": "Portofolio Personal Interaktif",
+    "project4_desc": "Website portofolio modern yang sangat interaktif, menampilkan animasi GSAP, elemen 3D, dan dukungan multibahasa penuh untuk memamerkan keahlian pengembangan saya.",
+    "project5_title": "Generator Kode QR",
+    "project5_desc": "Utilitas web yang cepat dan andal untuk menghasilkan kode QR kustom secara instan, dirancang untuk berbagai kebutuhan digital dan cetak.",
+    "project6_title": "Pengunduh Video Universal",
+    "project6_desc": "Aplikasi utilitas tangguh yang dikembangkan menggunakan Python dan Flask untuk mengekstrak dan mengunduh konten media dari berbagai platform video online dengan mudah.",
+    "project7_title": "Aplikasi Streaming Anime",
+    "project7_desc": "Platform streaming dinamis yang memanfaatkan REST API pihak ketiga untuk mengambil, mencari, dan memutar episode terbaru dengan lancar tanpa hambatan.",
+    "project8_title": "Penghapus Latar Belakang AI",
+    "project8_desc": "Alat pemrosesan gambar berbasis AI yang secara akurat memisahkan dan menghapus subjek dari latar belakang aslinya hanya dalam hitungan detik."
+  },
+  "contact": {
+    "heading_1": "Mulai",
+    "heading_2": "Koneksi",
+    "subheading": "// Buat Jalur Komunikasi Terenkripsi",
+    "form": {
+      "name_label": "Identitas",
+      "email_label": "Surel",
+      "subject_label": "Subjek",
+      "message_label": "Pesan",
+      "submit": "Kirim Sinyal",
+      "submitting": "Mengirim...",
+      "success": "Transmisi Berhasil. Saya akan segera merespon.",
+      "error": "Koneksi Gagal. Silakan coba lagi."
+    },
+    "info": {
+      "title": "Pusat Operasi.",
+      "desc": "Berpusat di Tegal, Jawa Tengah. Saya selalu terbuka untuk diskusi mengenai arsitektur perangkat lunak, kolaborasi jarak jauh, atau sekadar bertukar pikiran.",
+      "socials": "// Transmisi Alternatif"
+    }
+  }
+}
