@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+/* Tema Apple / Netflix (Dark Mode Default) */
+@theme {
+  --color-primary: #050505;
+  --color-secondary: #f5f5f7;
+  --color-accent: #e50914; /* Merah Netflix untuk CTA / Hover (opsional) */
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-primary text-secondary overflow-x-hidden antialiased selection:bg-secondary selection:text-primary;
+  }
+
+  /* Kustomisasi Scrollbar Minimalis */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-800 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-600;
+  }
+}
+
+/* Sembunyikan scrollbar untuk area horizontal scroll (seperti slider) */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
