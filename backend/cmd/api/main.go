@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"net/http"
 	"os"
 
 	"portfoliov2-backend/internal/config"
@@ -12,21 +13,24 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func main() {
+// Deklarasi engine Gin secara global agar bisa dikonsumsi oleh Vercel
+var app *gin.Engine
+
+func init() {
 	// Load variabel .env
 	err := godotenv.Load()
 	if err != nil {
 		log.Println("Peringatan: File .env tidak ditemukan, menggunakan environment system")
 	}
 
-	// Database Connection
+	// Database Connection 
 	config.ConnectDatabase()
 
-	// Setup Gin Router
-	r := gin.Default()
+	// Inisialisasi Gin Router
+	app = gin.Default()
 
 	// Configure CORS
-	r.Use(cors.New(cors.Config{
+	app.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"http://localhost:3000"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
@@ -35,21 +39,26 @@ func main() {
 	}))
 
 	// Endpoint Test
-	r.GET("/api/health", func(c *gin.Context) {
+	app.GET("/api/health", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"status":  "success",
-			"message": "API Portofolio berjalan dengan baik!",
+			"message": "API Portofolio berjalan dengan baik di Vercel Serverless!",
 		})
 	})
 
-	// Setup Routes
-	routes.SetupRoutes(r)
+	routes.SetupRoutes(app)
+}
 
+func Handler(w http.ResponseWriter, r *http.Request) {
+	app.ServeHTTP(w, r)
+}
+
+func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
 
-	log.Printf("Server berjalan di http://localhost:%s\n", port)
-	r.Run(":" + port)
+	log.Printf("Server lokal berjalan di http://localhost:%s\n", port)
+	app.Run(":" + port)
 }
