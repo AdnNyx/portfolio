@@ -26,9 +26,7 @@ export default function ProjectsPage() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8080/api/v1/projects",
-        );
+        const response = await axios.get("/api/v1/projects");
         if (response.data?.data) {
           setProjects(response.data.data);
         }
