@@ -2,12 +2,21 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "services": {
     "backend": {
-      "root": "backend",
-      "runtime": "go"
+      "root": "apps/backend",
+      "runtime": "go",
+      "entrypoint": "main.go"
     },
     "frontend": {
-      "root": "frontend",
-      "framework": "nextjs"
+      "root": "apps/frontend",
+      "framework": "nextjs",
+      "bindings": [
+        {
+          "type": "service",
+          "service": "backend",
+          "format": "url",
+          "env": "BACKEND_URL"
+        }
+      ]
     }
   },
   "rewrites": [
